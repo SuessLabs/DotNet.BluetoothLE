@@ -1,7 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>$(TargetFrameworks);uap10.0.17763;net6.0;net5.0-windows10.0.17763.0;</TargetFrameworks>
+    <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0.17763;net6.0;net5.0-windows10.0.17763.0;</TargetFrameworks>
+    <Product>$(AssemblyName) ($(TargetFramework))</Product>
+    <BaseOutputPath>..\..\output</BaseOutputPath>
+    <PackageReadmeFile>..\readme.md</PackageReadmeFile>
+    <PackageTags>BluetoothLe xamarin linux mac ios android uwp wpf netcore net dotnet tizen tvos watchos</PackageTags>
+    <Copyright>Copyright © 2022 Xeno Innovations, Inc.</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,4 +17,64 @@
     <Folder Include="Platform\Microsoft\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="..\readme.md" Pack="true" PackagePath="\" />
+    <Compile Include="**\*.shared.cs" />
+    <Compile Include="**\*.shared.*.cs" />
+  </ItemGroup>
+  
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
+    <Compile Include="**\*.netstandard.cs" />
+    <Compile Include="**\*.netstandard.*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('uap10.0')) ">
+    <Compile Include="**\*.uwp.cs" />
+    <Compile Include="**\*.uwp.*.cs" />
+  </ItemGroup>
+
+<PropertyGroup Condition=" $(TargetFramework.StartsWith('net6')) ">
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" $(TargetFramework.StartsWith('net5.0-windows10')) ">
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+      
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('net6')) ">
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.17763.1000" />
+    <Compile Include="**\*.netcore.cs" />
+    <Compile Include="**\*.netcore.*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('net5.0-windows10')) ">
+    <Compile Include="**\*.netcore.cs" />
+    <Compile Include="**\*.netcore.*.cs" />
+  </ItemGroup>
+
+<ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+    <Compile Include="**\*.android.cs" />
+    <Compile Include="**\*.android.*.cs" />
+    <AndroidResource Include="Resources\xml\*.xml" />
+  </ItemGroup>
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+    <Compile Include="**\*.ios.cs" />
+    <Compile Include="**\*.ios.*.cs" />
+  </ItemGroup>
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.Mac')) ">
+    <Compile Include="**\*.mac.cs" />
+    <Compile Include="**\*.mac.*.cs" />
+  </ItemGroup>
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.TVOS')) ">
+    <Compile Include="**\*.tvos.cs" />
+    <Compile Include="**\*.tvos.*.cs" />
+  </ItemGroup>
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.WatchOS')) ">
+    <Compile Include="**\*.watchos.cs" />
+    <Compile Include="**\*.watchos.*.cs" />
+  </ItemGroup>
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('tizen')) ">
+    <Compile Include="**\*.tizen.cs" />
+    <Compile Include="**\*.tizen.*.cs" />
+  </ItemGroup>
 </Project>
