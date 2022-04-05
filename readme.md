@@ -16,6 +16,7 @@ As developers, some of us want bare-bones, down to the metal code without the ne
 | iOS     |     | TBA
 | Mac     | 10.9 (Maverics) | TBA
 | Tizen   |  | TBA
+
 ## Setup
 
 ### Android
