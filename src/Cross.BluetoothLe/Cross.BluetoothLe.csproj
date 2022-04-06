@@ -1,25 +1,31 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>$(TargetFrameworks);uap10.0.17763;net6.0;net5.0-windows10.0.17763.0;</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;</TargetFrameworks>
     <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0.17763;net6.0;net5.0-windows10.0.17763.0;</TargetFrameworks>
-    <TargetFrameworks Condition=" '$(OS)' == 'Unix' ">net6.0</TargetFrameworks>
+    <TargetFrameworks Condition=" '$(OS)' == 'Unix' ">net5.0;net6.0</TargetFrameworks>
+
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
+    <Configurations>Debug;Release</Configurations>
+    <DebugType>portable</DebugType>
+    <RootNamespace>Cross.BluetoothLe</RootNamespace>
+    
     <BaseOutputPath>..\..\output</BaseOutputPath>
+    <Description>Cross-platform Bluetooth LE library for .NET</Description>
+
     <PackageReadmeFile>..\readme.md</PackageReadmeFile>
     <PackageTags>BluetoothLe xamarin linux mac ios android uwp wpf netcore net dotnet tizen tvos watchos</PackageTags>
     <Copyright>Copyright © 2022 Xeno Innovations, Inc.</Copyright>
   </PropertyGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <Folder Include="Services\" />
     <Folder Include="Platform\Android\" />
     <Folder Include="Platform\Apple\" />
     <Folder Include="Platform\Microsoft\" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
-    <None Include="..\readme.md" Pack="true" PackagePath="\" />
     <Compile Include="**\*.shared.cs" />
     <Compile Include="**\*.shared.*.cs" />
   </ItemGroup>
@@ -52,8 +58,8 @@
     <Compile Include="**\*.netcore.cs" />
     <Compile Include="**\*.netcore.*.cs" />
   </ItemGroup>
-
-<ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+  <!--
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
     <Compile Include="**\*.android.cs" />
     <Compile Include="**\*.android.*.cs" />
     <AndroidResource Include="Resources\xml\*.xml" />
@@ -78,4 +84,5 @@
     <Compile Include="**\*.tizen.cs" />
     <Compile Include="**\*.tizen.*.cs" />
   </ItemGroup>
+  -->
 </Project>
