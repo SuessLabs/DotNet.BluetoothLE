@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;</TargetFrameworks>
-    <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0.17763;net6.0;net5.0-windows10.0.17763.0;</TargetFrameworks>
+    <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0.19041;net6.0;net5.0-windows10.0.19041.1;</TargetFrameworks>
     <TargetFrameworks Condition=" '$(OS)' == 'Unix' ">net5.0;net6.0</TargetFrameworks>
 
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
     <Configurations>Debug;Release</Configurations>
     <DebugType>portable</DebugType>
     <RootNamespace>Cross.BluetoothLe</RootNamespace>
-    
+
     <BaseOutputPath>..\..\output</BaseOutputPath>
     <Description>Cross-platform Bluetooth LE library for .NET</Description>
 
@@ -18,18 +18,20 @@
     <Copyright>Copyright © 2022 Xeno Innovations, Inc.</Copyright>
   </PropertyGroup>
 
-  <!--<ItemGroup>
-    <Folder Include="Services\" />
-    <Folder Include="Platform\Android\" />
-    <Folder Include="Platform\Apple\" />
-    <Folder Include="Platform\Microsoft\" />
-  </ItemGroup>-->
+  <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Include="**\*.shared.cs" />
-    <Compile Include="**\*.shared.*.cs" />
+  <ItemGroup Condition=" '$(Configuration)'=='Release' And '$(OS)' == 'Windows_NT' ">
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
-  
+
+  <!-- This throws a duplicate reference error. -->
+  <ItemGroup>
+    <Compile Include="**\*.base.cs" />
+    <Compile Include="**\*.base.*.cs" />
+  </ItemGroup>
+
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
     <Compile Include="**\*.netstandard.cs" />
     <Compile Include="**\*.netstandard.*.cs" />
@@ -40,16 +42,21 @@
     <Compile Include="**\*.uwp.*.cs" />
   </ItemGroup>
 
-<PropertyGroup Condition=" $(TargetFramework.StartsWith('net6')) ">
+  <ItemGroup Condition=" $(OS) == 'Linux' ">
+    <Compile Include="**\*.linux.cs" />
+    <Compile Include="**\*.linux.*.cs" />
+  </ItemGroup>
+
+  <PropertyGroup Condition=" $(TargetFramework.StartsWith('netcoreapp')) ">
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <PropertyGroup Condition=" $(TargetFramework.StartsWith('net5.0-windows10')) ">
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-      
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('net6')) ">
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.17763.1000" />
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('netcoreapp')) ">
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.19041.1" />
     <Compile Include="**\*.netcore.cs" />
     <Compile Include="**\*.netcore.*.cs" />
   </ItemGroup>
@@ -58,31 +65,39 @@
     <Compile Include="**\*.netcore.cs" />
     <Compile Include="**\*.netcore.*.cs" />
   </ItemGroup>
-  <!--
+
+  <PropertyGroup Condition=" $(TargetFramework.StartsWith('net461')) ">
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('net461')) ">
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.19041.1" />
+    <Compile Include="**\*.netf.cs" />
+    <Compile Include="**\*.netf.*.cs" />
+  </ItemGroup>
+
   <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
     <Compile Include="**\*.android.cs" />
     <Compile Include="**\*.android.*.cs" />
     <AndroidResource Include="Resources\xml\*.xml" />
   </ItemGroup>
+
   <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
     <Compile Include="**\*.ios.cs" />
     <Compile Include="**\*.ios.*.cs" />
   </ItemGroup>
+
   <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.Mac')) ">
     <Compile Include="**\*.mac.cs" />
     <Compile Include="**\*.mac.*.cs" />
   </ItemGroup>
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.TVOS')) ">
-    <Compile Include="**\*.tvos.cs" />
-    <Compile Include="**\*.tvos.*.cs" />
-  </ItemGroup>
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.WatchOS')) ">
-    <Compile Include="**\*.watchos.cs" />
-    <Compile Include="**\*.watchos.*.cs" />
-  </ItemGroup>
+
   <ItemGroup Condition=" $(TargetFramework.StartsWith('tizen')) ">
     <Compile Include="**\*.tizen.cs" />
     <Compile Include="**\*.tizen.*.cs" />
   </ItemGroup>
-  -->
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.19041.1" />
+  </ItemGroup>
 </Project>
