@@ -12,7 +12,6 @@ using Windows.Devices.Bluetooth.Advertisement;
 using Cross.BluetoothLe;
 using Cross.BluetoothLe.Extensions;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
-using Cross.BluetoothLe.Exceptions;
 
 namespace Cross.BluetoothLe.Adapters
 {
