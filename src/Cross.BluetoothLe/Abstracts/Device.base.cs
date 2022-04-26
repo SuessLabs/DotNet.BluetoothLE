@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Cross.BluetoothLe
+namespace Cross.BluetoothLe.Abstracts
 {
   public partial class Device : IDisposable, ICancellationMaster, INotifyPropertyChanged
   {

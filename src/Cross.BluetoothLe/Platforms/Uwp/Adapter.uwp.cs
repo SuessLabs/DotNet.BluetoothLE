@@ -8,12 +8,10 @@ using System.Threading.Tasks;
 
 using Windows.Devices.Bluetooth;
 using Windows.Devices.Bluetooth.Advertisement;
-
-using Cross.BluetoothLe;
 using Cross.BluetoothLe.Extensions;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
 
-namespace Cross.BluetoothLe.Adapters
+namespace Cross.BluetoothLe.Platforms.Uwp
 {
   public partial class Adapter
   {
@@ -73,14 +71,10 @@ namespace Cross.BluetoothLe.Adapters
     private void Device_ConnectionStatusChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
     {
       if (!(sender is ObservableBluetoothLEDevice nativeDevice) || nativeDevice.BluetoothLEDevice == null)
-      {
         return;
-      }
 
       if (propertyChangedEventArgs.PropertyName != nameof(nativeDevice.IsConnected))
-      {
         return;
-      }
 
       var address = ParseDeviceId(nativeDevice.BluetoothLEDevice.BluetoothAddress).ToString();
       if (nativeDevice.IsConnected && ConnectedDeviceRegistry.TryGetValue(address, out var connectedDevice))
@@ -90,9 +84,7 @@ namespace Cross.BluetoothLe.Adapters
       }
 
       if (!nativeDevice.IsConnected && ConnectedDeviceRegistry.TryRemove(address, out var disconnectedDevice))
-      {
         HandleDisconnectedDevice(false, disconnectedDevice);
-      }
     }
 
     protected void DisconnectDeviceNative(Device device)

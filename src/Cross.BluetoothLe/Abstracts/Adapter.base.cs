@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Cross.BluetoothLe.EventArgs;
 using Cross.BluetoothLe.Helpers;
 
-namespace Cross.BluetoothLe
+namespace Cross.BluetoothLe.Abstracts
 {
   public partial class Adapter
   {
