@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;</TargetFrameworks>
-    <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0.19041;net6.0;net5.0-windows10.0.19041.1;</TargetFrameworks>
+    <!--<TargetFrameworks>netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;Xamarin.TVOS10;Xamarin.WatchOS10;MonoAndroid90;tizen40;</TargetFrameworks>-->
+    <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0.19041;net6.0;net5.0-windows10.0.19041.0;</TargetFrameworks>
     <TargetFrameworks Condition=" '$(OS)' == 'Unix' ">net5.0;net6.0</TargetFrameworks>
 
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
@@ -12,10 +13,19 @@
 
     <BaseOutputPath>..\..\output</BaseOutputPath>
     <Description>Cross-platform Bluetooth LE library for .NET</Description>
+    <Copyright>Copyright © 2022 Xeno Innovations, Inc.</Copyright>
+    <RepositoryUrl>https://github.com/newky2k/DSoft.System.BluetoothLe</RepositoryUrl>
 
+    <PackageId>Cross.BluetoothLe</PackageId>
+    <Authors>Damian Suess</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageReadmeFile>..\readme.md</PackageReadmeFile>
     <PackageTags>BluetoothLe xamarin linux mac ios android uwp wpf netcore net dotnet tizen tvos watchos</PackageTags>
-    <Copyright>Copyright © 2022 Xeno Innovations, Inc.</Copyright>
+    <PackageProjectUrl>https://github.com/newky2k/DSoft.System.BluetoothLe</PackageProjectUrl>
+    <PackageReleaseNotes>
+      - Added NET 5.x support
+      - Update windows apis to 10.0.19041
+    </PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">

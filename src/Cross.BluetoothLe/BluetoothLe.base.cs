@@ -1,6 +1,5 @@
 ﻿using System;
-using Cross.BluetoothLe.Enums;
-using Cross.BluetoothLe.Adapter;
+using Cross.BluetoothLe.Abstracts;
 
 namespace Cross.BluetoothLe
 {
@@ -26,6 +25,8 @@ namespace Cross.BluetoothLe
 
         if (ret == null)
           throw new PlatformNotSupportedException();
+
+        return ret;
       }
     }
 
