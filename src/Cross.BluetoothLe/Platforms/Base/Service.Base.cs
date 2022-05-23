@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cross.BluetoothLe.Service
+namespace Cross.BluetoothLe
 {
   /// <summary>Base cross-platform GATT Service.</summary>
   public partial class Service : IDisposable

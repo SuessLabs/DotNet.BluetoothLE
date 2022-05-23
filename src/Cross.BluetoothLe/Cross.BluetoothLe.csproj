@@ -39,6 +39,11 @@
   <Target Name="TestMsg-PRE">
     <Message Text="About to include files..." />
   </Target>
+
+  <ItemGroup>
+    <Compile Remove="Platforms\**\*.*" />
+    <None Include="Platforms\**\*.*" />
+  </ItemGroup>
   
   <!-- This throws a duplicate reference error. -->
   <ItemGroup>

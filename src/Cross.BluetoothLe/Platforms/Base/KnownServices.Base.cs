@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Cross.BluetoothLe.Service
+namespace Cross.BluetoothLe
 {
   public static class KnownServices
   {
