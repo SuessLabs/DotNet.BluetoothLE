@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Cross.BluetoothLe.Abstracts
+namespace Cross.BluetoothLe
 {
   public partial class Device : IDisposable, ICancellationMaster, INotifyPropertyChanged
   {
@@ -59,7 +59,7 @@ namespace Cross.BluetoothLe.Abstracts
     /// <value>
     /// The name or Id.
     /// </value>
-    public string NameOrId => (string.IsNullOrWhiteSpace(Name)) ? Id.ToString() : Name;
+    public string NameOrId => string.IsNullOrWhiteSpace(Name) ? Id.ToString() : Name;
 
     /// <summary>
     /// Gets or sets the Rssi(Received Signal Strength Indicator) value for the device
@@ -102,14 +102,10 @@ namespace Cross.BluetoothLe.Abstracts
     public override bool Equals(object other)
     {
       if (other == null)
-      {
         return false;
-      }
 
       if (other.GetType() != GetType())
-      {
         return false;
-      }
 
       var otherDeviceBase = (Device)other;
       return Id == otherDeviceBase.Id;
@@ -129,9 +125,7 @@ namespace Cross.BluetoothLe.Abstracts
       lock (KnownServices)
       {
         if (KnownServices.Any())
-        {
           return KnownServices.ToArray();
-        }
       }
 
       using (var source = this.GetCombinedSource(cancellationToken))

@@ -14,14 +14,14 @@
     <BaseOutputPath>..\..\output</BaseOutputPath>
     <Description>Cross-platform Bluetooth LE library for .NET</Description>
     <Copyright>Copyright © 2022 Xeno Innovations, Inc.</Copyright>
-    <RepositoryUrl>https://github.com/newky2k/DSoft.System.BluetoothLe</RepositoryUrl>
+    <RepositoryUrl>https://github.com/SuessLabs/Cross.BluetoothLe</RepositoryUrl>
 
     <PackageId>Cross.BluetoothLe</PackageId>
     <Authors>Damian Suess</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageReadmeFile>..\readme.md</PackageReadmeFile>
     <PackageTags>BluetoothLe xamarin linux mac ios android uwp wpf netcore net dotnet tizen tvos watchos</PackageTags>
-    <PackageProjectUrl>https://github.com/newky2k/DSoft.System.BluetoothLe</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/SuessLabs/Cross.BluetoothLe</PackageProjectUrl>
     <PackageReleaseNotes>
       - Added NET 5.x support
       - Update windows apis to 10.0.19041
@@ -36,10 +36,14 @@
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
 
+  <Target Name="TestMsg-PRE">
+    <Message Text="About to include files..." />
+  </Target>
+  
   <!-- This throws a duplicate reference error. -->
   <ItemGroup>
-    <Compile Include="**\*.base.cs" />
-    <Compile Include="**\*.base.*.cs" />
+    <Compile Include="**\*.Base.cs" />
+    <Compile Include="**\*.Base.*.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
@@ -53,8 +57,10 @@
   </ItemGroup>
 
   <ItemGroup Condition=" $(OS) == 'Linux' ">
-    <Compile Include="**\*.linux.cs" />
-    <Compile Include="**\*.linux.*.cs" />
+    <!-- Condition=" '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' ">-->
+    <!--Condition=" $(OS) == 'Linux' "> -->
+    <Compile Include="**\*.Linux.cs" />
+    <Compile Include="**\*.Linux.*.cs" />
   </ItemGroup>
 
   <PropertyGroup Condition=" $(TargetFramework.StartsWith('netcoreapp')) ">
@@ -107,13 +113,17 @@
     <Compile Include="**\*.tizen.*.cs" />
   </ItemGroup>
 
+  <Target Name="TestMsg-POST">
+    <Message Text="Done including files." />
+  </Target>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.19041.1" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <Folder Include="Exceptions\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Platforms\Linux\" />
-  </ItemGroup>
+  </ItemGroup>-->
 </Project>

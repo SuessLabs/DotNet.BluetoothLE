@@ -1,5 +1,5 @@
 ﻿using System;
-using Cross.BluetoothLe.Abstracts;
+using Cross.BluetoothLe.EventArgs;
 
 namespace Cross.BluetoothLe
 {
@@ -10,7 +10,7 @@ namespace Cross.BluetoothLe
     private readonly Lazy<Adapter> _adapter;
     private BluetoothState _state;
 
-    internal BluetoothLE()
+    internal BluetoothLe()
     {
       _adapter = new Lazy<Adapter>(CreateAdapter, System.Threading.LazyThreadSafetyMode.PublicationOnly);
     }

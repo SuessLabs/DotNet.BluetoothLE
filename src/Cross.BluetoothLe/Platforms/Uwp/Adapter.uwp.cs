@@ -5,13 +5,11 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using System.Threading.Tasks;
-
 using Windows.Devices.Bluetooth;
 using Windows.Devices.Bluetooth.Advertisement;
 using Cross.BluetoothLe.Extensions;
-using Windows.Devices.Bluetooth.GenericAttributeProfile;
 
-namespace Cross.BluetoothLe.Platforms.Uwp
+namespace Cross.BluetoothLe
 {
   public partial class Adapter
   {

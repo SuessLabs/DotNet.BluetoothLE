@@ -4,10 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+
+/* Unmerged change from project 'Cross.BluetoothLe (uap10.0.19041)'
+Before:
+using Cross.BluetoothLe.EventArgs;
+After:
+using Cross;
+using Cross.BluetoothLe;
+using Cross.BluetoothLe.Abstracts;
+using Cross.BluetoothLe.EventArgs;
+*/
 using Cross.BluetoothLe.EventArgs;
 using Cross.BluetoothLe.Helpers;
 
-namespace Cross.BluetoothLe.Abstracts
+namespace Cross.BluetoothLe
 {
   public partial class Adapter
   {
@@ -108,25 +118,25 @@ namespace Cross.BluetoothLe.Abstracts
       return TaskBuilder.FromEvent<bool, EventHandler<DeviceEventArgs>, EventHandler<DeviceErrorEventArgs>>(
          execute: () => DisconnectDeviceNative(device),
 
-         getCompleteHandler: (complete, reject) => ((sender, args) =>
+         getCompleteHandler: (complete, reject) => (sender, args) =>
          {
            if (args.Device.Id == device.Id)
            {
              Trace.Message("DisconnectAsync Disconnected: {0} {1}", args.Device.Id, args.Device.Name);
              complete(true);
            }
-         }),
+         },
          subscribeComplete: handler => DeviceDisconnected += handler,
          unsubscribeComplete: handler => DeviceDisconnected -= handler,
 
-         getRejectHandler: reject => ((sender, args) =>
+         getRejectHandler: reject => (sender, args) =>
          {
            if (args.Device.Id == device.Id)
            {
              Trace.Message("DisconnectAsync", "Disconnect Error: {0} {1}", args.Device?.Id, args.Device?.Name);
              reject(new Exception("Disconnect operation exception"));
            }
-         }),
+         },
          subscribeReject: handler => DeviceConnectionError += handler,
          unsubscribeReject: handler => DeviceConnectionError -= handler);
     }
@@ -159,9 +169,7 @@ namespace Cross.BluetoothLe.Abstracts
         DeviceConnectionLost?.Invoke(this, new DeviceErrorEventArgs { Device = device });
 
         if (DiscoveredDevicesRegistry.TryRemove(device.Id, out _))
-        {
           Trace.Message("Removed device from discovered devices list: {0}", device.Name);
-        }
       }
     }
 
@@ -216,9 +224,7 @@ namespace Cross.BluetoothLe.Abstracts
     public Task StopScanningForDevicesAsync()
     {
       if (_scanCancellationTokenSource != null && !_scanCancellationTokenSource.IsCancellationRequested)
-      {
         _scanCancellationTokenSource.Cancel();
-      }
       else
       {
         Trace.Message("Adapter: Already cancelled scan.");
