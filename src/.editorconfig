@@ -1,5 +1,6 @@
 # Copyright 2022 Xeno Innovations, Inc.
 # https://github.com/xenoinc/CodeDevOps
+# Revision: 6.2
 #
 # This EditorConfig file provides consistant coding styles and formatting
 # structures for your team's projects while preserving your personal defaults.
@@ -33,6 +34,14 @@ root = true
 [*]
 end_of_line = crlf
 indent_style = space
+
+[*.{cs,csx}]
+indent_style = space
+indent_size = 2
+tab_width = 2
+charset = utf-8-bom
+trim_trailing_whitespace = true
+insert_final_newline = true
 
 [*.{c,cpp,h}]
 indent_style = space
@@ -100,15 +109,8 @@ indent_size = 2
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-# C# Files
+# C# Ruleset
 [*.{cs,csx}]
-indent_style = space
-indent_size = 2
-tab_width = 2
-charset = utf-8-bom
-trim_trailing_whitespace = true
-insert_final_newline = true
-
 # Indentation preferences
 csharp_indent_block_contents = true
 csharp_indent_braces = false
