@@ -1,5 +1,6 @@
 ﻿namespace Cross.BluetoothLe
 {
+  // TODO: Rename to ConnectionState
   /// <summary>Determines the connection state of the device.</summary>
   public enum DeviceState
   {

@@ -11,7 +11,7 @@ namespace Cross.BluetoothLe
   public partial class Device : IDisposable, ICancellationMaster, INotifyPropertyChanged
   {
     protected readonly Adapter Adapter;
-    private readonly List<Service> KnownServices = new List<Service>();
+    private readonly List<Service> _knownServices = new List<Service>();
     private Guid _id;
     private string _name;
     private int _rssi;
@@ -27,7 +27,7 @@ namespace Cross.BluetoothLe
 
     public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
-    public IReadOnlyList<AdvertisementRecord> AdvertisementRecords { get; protected set; }
+    //// public IReadOnlyList<AdvertisementRecord> AdvertisementRecords { get; protected set; }
 
     /// <summary>
     /// Gets or sets the Id of the device
@@ -81,9 +81,9 @@ namespace Cross.BluetoothLe
     {
       this.CancelEverythingAndReInitialize();
 
-      lock (KnownServices)
+      lock (_knownServices)
       {
-        foreach (var service in KnownServices)
+        foreach (var service in _knownServices)
         {
           try
           {
@@ -95,7 +95,7 @@ namespace Cross.BluetoothLe
           }
         }
 
-        KnownServices.Clear();
+        _knownServices.Clear();
       }
     }
 
@@ -122,20 +122,20 @@ namespace Cross.BluetoothLe
 
     public async Task<IReadOnlyList<Service>> GetServicesAsync(CancellationToken cancellationToken = default)
     {
-      lock (KnownServices)
+      lock (_knownServices)
       {
-        if (KnownServices.Any())
-          return KnownServices.ToArray();
+        if (_knownServices.Any())
+          return _knownServices.ToArray();
       }
 
       using (var source = this.GetCombinedSource(cancellationToken))
       {
         var services = await GetServicesNativeAsync();
 
-        lock (KnownServices)
+        lock (_knownServices)
         {
-          KnownServices.AddRange(services);
-          return KnownServices.ToArray();
+          _knownServices.AddRange(services);
+          return _knownServices.ToArray();
         }
       }
     }

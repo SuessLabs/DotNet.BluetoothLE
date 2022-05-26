@@ -44,29 +44,48 @@
     <Compile Remove="Platforms\**\*.*" />
     <None Include="Platforms\**\*.*" />
   </ItemGroup>
-  
-  <!-- This throws a duplicate reference error. -->
+
   <ItemGroup>
-    <Compile Include="**\*.Base.cs" />
-    <Compile Include="**\*.Base.*.cs" />
+    <Compile Include="Platforms\**\*.Base.cs" />
+    <Compile Include="Platforms\**\*.Base.*.cs" />
   </ItemGroup>
 
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
-    <Compile Include="**\*.netstandard.cs" />
-    <Compile Include="**\*.netstandard.*.cs" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('uap10.0')) ">
-    <Compile Include="**\*.uwp.cs" />
-    <Compile Include="**\*.uwp.*.cs" />
-  </ItemGroup>
+  <Choose>
+    <When Condition="$(OS) == 'Windows'">
+      <ItemGroup>
+        
+      </ItemGroup>
+    </When>
+  </Choose>
 
   <ItemGroup Condition=" $(OS) == 'Linux' ">
     <!-- Condition=" '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' ">-->
     <!--Condition=" $(OS) == 'Linux' "> -->
     <Compile Include="**\*.Linux.cs" />
     <Compile Include="**\*.Linux.*.cs" />
+    <PackageReference Include="Plugin.BlueZ" Version="5.53.1" />
   </ItemGroup>
+
+  <!--<ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
+    <Compile Include="**\*.netstandard.cs" />
+    <Compile Include="**\*.netstandard.*.cs" />
+  </ItemGroup>-->
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('uap10.0')) ">
+    <Compile Include="**\*.uwp.cs" />
+    <Compile Include="**\*.uwp.*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('netcoreapp')) ">
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.19041.1" />
+    <Compile Include="**\*.netcore.cs" />
+    <Compile Include="**\*.netcore.*.cs" />
+  </ItemGroup>
+
+  <!--<ItemGroup Condition=" $(TargetFramework.StartsWith('net5.0-windows10')) ">
+    <Compile Include="**\*.netcore.cs" />
+    <Compile Include="**\*.netcore.*.cs" />
+  </ItemGroup>-->
 
   <PropertyGroup Condition=" $(TargetFramework.StartsWith('netcoreapp')) ">
     <UseWPF>true</UseWPF>
@@ -75,17 +94,6 @@
   <PropertyGroup Condition=" $(TargetFramework.StartsWith('net5.0-windows10')) ">
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('netcoreapp')) ">
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.19041.1" />
-    <Compile Include="**\*.netcore.cs" />
-    <Compile Include="**\*.netcore.*.cs" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('net5.0-windows10')) ">
-    <Compile Include="**\*.netcore.cs" />
-    <Compile Include="**\*.netcore.*.cs" />
-  </ItemGroup>
 
   <PropertyGroup Condition=" $(TargetFramework.StartsWith('net461')) ">
     <UseWPF>true</UseWPF>
