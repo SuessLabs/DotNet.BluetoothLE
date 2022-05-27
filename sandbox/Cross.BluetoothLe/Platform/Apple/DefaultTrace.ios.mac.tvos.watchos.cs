@@ -1,12 +1,10 @@
-﻿using System;
-
-namespace System.BluetoothLe
+﻿namespace System.BluetoothLe
 {
-    static class DefaultTrace
+  static class DefaultTrace
+  {
+    static DefaultTrace()
     {
-        static DefaultTrace()
-        {
-            Trace.TraceImplementation = Console.WriteLine;
-        }
+      Trace.TraceImplementation = Console.WriteLine;
     }
+  }
 }

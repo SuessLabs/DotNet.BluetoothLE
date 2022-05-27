@@ -1,21 +1,19 @@
-using System;
-
-namespace System.BluetoothLe
+﻿namespace System.BluetoothLe
 {
-    public struct KnownService
+  public struct KnownService
+  {
+    public string Name { get; }
+    public Guid Id { get; }
+
+    public KnownService(string name, Guid id)
     {
-        public string Name { get; }
-        public Guid Id { get; }
-
-        public KnownService(string name, Guid id)
-        {
-            Name = name;
-            Id = id;
-        }
-
-        public override string ToString()
-        {
-            return $"{Name} - {Id}";
-        }
+      Name = name;
+      Id = id;
     }
+
+    public override string ToString()
+    {
+      return $"{Name} - {Id}";
+    }
+  }
 }
