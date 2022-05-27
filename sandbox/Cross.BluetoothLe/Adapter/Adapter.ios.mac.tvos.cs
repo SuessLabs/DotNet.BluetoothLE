@@ -33,8 +33,8 @@ namespace Cross.BluetoothLe
         var name = e.Peripheral.Name;
         if (e.AdvertisementData.ContainsKey(CBAdvertisement.DataLocalNameKey))
         {
-                // iOS caches the peripheral name, so it can become stale (if changing)
-                // keep track of the local name key manually
+          // iOS caches the peripheral name, so it can become stale (if changing)
+          // keep track of the local name key manually
           name = ((NSString)e.AdvertisementData.ValueForKey(CBAdvertisement.DataLocalNameKey)).ToString();
         }
 
@@ -48,8 +48,8 @@ namespace Cross.BluetoothLe
         Trace.Message("UpdatedState: {0}", _centralManager.State);
         _stateChanged.Set();
 
-              //handle PoweredOff state
-              //notify subscribers about disconnection
+        //handle PoweredOff state
+        //notify subscribers about disconnection
         if (_centralManager.State == CBCentralManagerState.PoweredOff)
         {
           foreach (var device in ConnectedDeviceRegistry.Values.ToList())
@@ -66,7 +66,7 @@ namespace Cross.BluetoothLe
       {
         Trace.Message("ConnectedPeripherial: {0}", e.Peripheral.Name);
 
-              // when a peripheral gets connected, add that peripheral to our running list of connected peripherals
+        // when a peripheral gets connected, add that peripheral to our running list of connected peripherals
         var guid = ParseDeviceGuid(e.Peripheral).ToString();
 
         Device device;
@@ -92,24 +92,24 @@ namespace Cross.BluetoothLe
           Trace.Message("Disconnect error {0} {1} {2}", e.Error.Code, e.Error.Description, e.Error.Domain);
         }
 
-              // when a peripheral disconnects, remove it from our running list.
+        // when a peripheral disconnects, remove it from our running list.
         var id = ParseDeviceGuid(e.Peripheral);
         var stringId = id.ToString();
 
-              // normal disconnect (requested by user)
+        // normal disconnect (requested by user)
         var isNormalDisconnect = _deviceOperationRegistry.TryGetValue(stringId, out var foundDevice);
         if (isNormalDisconnect)
         {
           _deviceOperationRegistry.Remove(stringId);
         }
 
-              // check if it is a peripheral disconnection, which would be treated as normal
+        // check if it is a peripheral disconnection, which would be treated as normal
         if (e.Error != null && e.Error.Code == 7 && e.Error.Domain == "CBErrorDomain")
         {
           isNormalDisconnect = true;
         }
 
-              // remove from connected devices
+        // remove from connected devices
         if (!ConnectedDeviceRegistry.TryRemove(stringId, out foundDevice))
         {
           Trace.Message($"Device with id '{stringId}' was not found in the connected device registry. Nothing to remove.");
@@ -117,7 +117,7 @@ namespace Cross.BluetoothLe
 
         foundDevice = foundDevice ?? new Device(this, e.Peripheral, _bleCentralManagerDelegate);
 
-              //make sure all cached services are cleared this will also clear characteristics and descriptors implicitly
+        //make sure all cached services are cleared this will also clear characteristics and descriptors implicitly
         ((Device)foundDevice).ClearServices();
 
         HandleDisconnectedDevice(isNormalDisconnect, foundDevice);
@@ -129,7 +129,7 @@ namespace Cross.BluetoothLe
             var id = ParseDeviceGuid(e.Peripheral);
             var stringId = id.ToString();
 
-                  // remove instance from registry
+            // remove instance from registry
             if (_deviceOperationRegistry.TryGetValue(stringId, out var foundDevice))
             {
               _deviceOperationRegistry.Remove(stringId);
@@ -197,9 +197,9 @@ namespace Cross.BluetoothLe
 
     /// <summary>
     /// Connects to known device async.
-    /// 
+    ///
     /// https://developer.apple.com/library/ios/documentation/NetworkingInternetWeb/Conceptual/CoreBluetooth_concepts/BestPracticesForInteractingWithARemotePeripheralDevice/BestPracticesForInteractingWithARemotePeripheralDevice.html
-    /// 
+    ///
     /// </summary>
     /// <returns>The to known device async.</returns>
     /// <param name="deviceGuid">Device GUID.</param>
@@ -241,9 +241,7 @@ namespace Cross.BluetoothLe
 
           throw new DeviceNotFoundException(deviceGuid);
         }
-
       }
-
 
       var device = new Device(this, peripherial, _bleCentralManagerDelegate, peripherial.Name, peripherial.RSSI?.Int32Value ?? 0, new List<AdvertisementRecord>());
 
@@ -263,7 +261,6 @@ namespace Cross.BluetoothLe
 
       return nativeDevices.Select(d => new Device(this, d, _bleCentralManagerDelegate)).Cast<Device>().ToList();
     }
-
 
     private async Task WaitForState(CBCentralManagerState state, CancellationToken cancellationToken, bool configureAwait = false)
     {
@@ -292,9 +289,9 @@ namespace Cross.BluetoothLe
       /*var keys = new List<NSString>
       {
           CBAdvertisement.DataLocalNameKey,
-          CBAdvertisement.DataManufacturerDataKey, 
+          CBAdvertisement.DataManufacturerDataKey,
           CBAdvertisement.DataOverflowServiceUUIDsKey, //ToDo ??which one is this according to ble spec
-          CBAdvertisement.DataServiceDataKey, 
+          CBAdvertisement.DataServiceDataKey,
           CBAdvertisement.DataServiceUUIDsKey,
           CBAdvertisement.DataSolicitedServiceUUIDsKey,
           CBAdvertisement.DataTxPowerLevelKey
@@ -327,14 +324,17 @@ namespace Cross.BluetoothLe
                 // 128-bit UUID
                 records.Add(new AdvertisementRecord(AdvertisementRecordType.UuidsComplete128Bit, cbuuid.Data.ToArray()));
                 break;
+
               case 8:
                 // 32-bit UUID
                 records.Add(new AdvertisementRecord(AdvertisementRecordType.UuidCom32Bit, cbuuid.Data.ToArray()));
                 break;
+
               case 2:
                 // 16-bit UUID
                 records.Add(new AdvertisementRecord(AdvertisementRecordType.UuidsComplete16Bit, cbuuid.Data.ToArray()));
                 break;
+
               default:
                 // Invalid data length for UUID
                 break;
@@ -362,7 +362,7 @@ namespace Cross.BluetoothLe
             //Get the service key in bytes (from NSData)
             byte[] keyAsData = dKey.Data.ToArray();
 
-            //Service UUID's are read backwards (little endian) according to specs, 
+            //Service UUID's are read backwards (little endian) according to specs,
             //CoreBluetooth returns the service UUIDs as Big Endian
             //but to match the raw service data returned from Android we need to reverse it back
             //Note haven't tested it yet on 128bit service UUID's, but should work

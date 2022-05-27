@@ -21,12 +21,10 @@ namespace Cross.BluetoothLe
       AdvertisementRecords = advertisementRecords;
 
       NativeDevice.OnNameChanged += (s, name) => { Name = name; };
-
     }
 
     public virtual void Dispose()
     {
-
       Adapter?.DisconnectDeviceAsync(this);
     }
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -7,12 +6,9 @@ using System.Threading.Tasks;
 using Android.Bluetooth;
 using Android.Bluetooth.LE;
 using Android.OS;
-using Java.Util;
-using Android.App;
-using Cross.BluetoothLe.Extensions;
 using Cross.BluetoothLe.Exceptions;
-using Java.Lang;
-using Trace = Cross.BluetoothLe.Trace;
+using Cross.BluetoothLe.Extensions;
+using Java.Util;
 
 namespace Cross.BluetoothLe
 {

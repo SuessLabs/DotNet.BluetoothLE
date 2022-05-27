@@ -7,9 +7,13 @@ namespace Cross.BluetoothLe
   public partial class Characteristic
   {
     public Guid NativeGuid => throw new PlatformNotSupportedException();
+
     public string NativeUuid => throw new PlatformNotSupportedException();
+
     public byte[] NativeValue => throw new PlatformNotSupportedException();
+
     public CharacteristicPropertyType NativeProperties => throw new PlatformNotSupportedException();
+
     public object NativeCharacteristic => throw new PlatformNotSupportedException();
 
     public string NativeName => KnownCharacteristics.Lookup(Id).Name;
