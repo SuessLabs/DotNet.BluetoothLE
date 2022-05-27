@@ -9,13 +9,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using Cross.BluetoothLe.Extensions;
 using Windows.Devices.Bluetooth;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
 using Windows.Devices.Enumeration;
-using Cross.BluetoothLe.Extensions;
 
 namespace Cross.BluetoothLe
 {
+  // REFERENCE: https://github.com/microsoft/BluetoothLEExplorer/blob/master/BluetoothLEExplorer/BluetoothLEExplorer/Models/ObservableBluetoothLEDevice.cs
+
   /*
     Windows Community Toolkit
     Copyright (c) .NET Foundation and Contributors
@@ -39,64 +41,40 @@ namespace Cross.BluetoothLe
   {
     public EventHandler<string> OnNameChanged = delegate { };
 
-    /// <summary>
-    /// Source for <see cref="BluetoothLEDevice" />
-    /// </summary>
+    /// <summary>Source for <see cref="BluetoothLEDevice" />.</summary>
     private BluetoothLEDevice _bluetoothLeDevice;
 
-    /// <summary>
-    /// Source for <see cref="DeviceInfo" />
-    /// </summary>
+    /// <summary>Source for <see cref="DeviceInfo" />.</summary>
     private DeviceInformation _deviceInfo;
 
-    /// <summary>
-    /// Source for <see cref="ErrorText" />
-    /// </summary>
+    /// <summary>Source for <see cref="ErrorText" />.</summary>
     private string _errorText;
 
-    /// <summary>
-    /// Source for <see cref="Glyph" />
-    /// </summary>
+    /// <summary>Source for <see cref="Glyph" />.</summary>
     private BitmapImage _glyph;
 
-    /// <summary>
-    /// Source for <see cref="IsConnected" />
-    /// </summary>
+    /// <summary>Source for <see cref="IsConnected" />.</summary>
     private bool _isConnected;
 
-    /// <summary>
-    /// Source for <see cref="IsPaired" />
-    /// </summary>
+    /// <summary>Source for <see cref="IsPaired" />.</summary>
     private bool _isPaired;
 
-    /// <summary>
-    /// Source for <see cref="Name" />
-    /// </summary>
+    /// <summary>Source for <see cref="Name" />.</summary>
     private string _name;
 
-    /// <summary>
-    /// result of finding all the services
-    /// </summary>
+    /// <summary>Result of finding all the services.</summary>
     private GattDeviceServicesResult _result;
 
-    /// <summary>
-    /// Queue to store the last 10 observed RSSI values
-    /// </summary>
+    /// <summary>Queue to store the last 10 observed RSSI values.</summary>
     private Queue<int> _rssiValue = new Queue<int>(10);
 
-    /// <summary>
-    /// Source for <see cref="RSSI"/>
-    /// </summary>
+    /// <summary>Source for <see cref="RSSI"/>.</summary>
     private int _rssi;
 
-    /// <summary>
-    /// Source for <see cref="ServiceCount" />
-    /// </summary>
+    /// <summary>Source for <see cref="ServiceCount" />.</summary>
     private int _serviceCount;
 
-    /// <summary>
-    /// Source for <see cref="Services" />
-    /// </summary>
+    /// <summary>Source for <see cref="Services" />.</summary>
     private ObservableCollection<GattDeviceService> _services = new ObservableCollection<GattDeviceService>();
 
     /// <summary>
@@ -442,10 +420,10 @@ namespace Cross.BluetoothLe
     private async void BluetoothLEDevice_ConnectionStatusChanged(BluetoothLEDevice sender, object args)
     {
       await Application.Current.Dispatcher.InvokeAsync(() =>
-          {
-            IsPaired = DeviceInfo.Pairing.IsPaired;
-            IsConnected = BluetoothLEDevice.ConnectionStatus == BluetoothConnectionStatus.Connected;
-          }, System.Windows.Threading.DispatcherPriority.Normal);
+      {
+        IsPaired = DeviceInfo.Pairing.IsPaired;
+        IsConnected = BluetoothLEDevice.ConnectionStatus == BluetoothConnectionStatus.Connected;
+      }, System.Windows.Threading.DispatcherPriority.Normal);
     }
 
     /// <summary>Load the glyph for this device.</summary>

@@ -1,5 +1,4 @@
 ﻿using System;
-using Cross.BluetoothLe.Extensions;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -7,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using Cross.BluetoothLe.Extensions;
 using Windows.ApplicationModel.Core;
 using Windows.Devices.Bluetooth;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
@@ -16,91 +16,66 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace Cross.BluetoothLe
 {
+  // REFERENCE: https://github.com/microsoft/BluetoothLEExplorer/blob/master/BluetoothLEExplorer/BluetoothLEExplorer/Models/ObservableBluetoothLEDevice.cs
+
   /*
-  Windows Community Toolkit
-  Copyright (c) .NET Foundation and Contributors
+    Windows Community Toolkit
+    Copyright (c) .NET Foundation and Contributors
 
-  All rights reserved.
+    All rights reserved.
 
-  MIT License (MIT)
-  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge,
-  publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+    MIT License (MIT)
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge,
+    publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-  THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-  DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+    THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+    DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    */
 
-  /// <summary>
-  /// Wrapper around <see cref="BluetoothLEDevice" /> to make it bindable.
-  /// </summary>
+  /// <summary>Wrapper around <see cref="BluetoothLEDevice" /> to make it bindable.</summary>
   /// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
   /// <seealso cref="System.IEquatable{ObservableBluetoothLEDevice}" />
   public class ObservableBluetoothLEDevice : INotifyPropertyChanged, IEquatable<ObservableBluetoothLEDevice>
   {
     public EventHandler<string> OnNameChanged = delegate { };
 
-    /// <summary>
-    /// Source for <see cref="BluetoothLEDevice" />
-    /// </summary>
+    /// <summary>Source for <see cref="BluetoothLEDevice" />.</summary>
     private BluetoothLEDevice _bluetoothLeDevice;
 
-    /// <summary>
-    /// Source for <see cref="DeviceInfo" />
-    /// </summary>
+    /// <summary>Source for <see cref="DeviceInfo" />.</summary>
     private DeviceInformation _deviceInfo;
 
-    /// <summary>
-    /// Source for <see cref="ErrorText" />
-    /// </summary>
+    /// <summary>Source for <see cref="ErrorText" />.</summary>
     private string _errorText;
 
-    /// <summary>
-    /// Source for <see cref="Glyph" />
-    /// </summary>
+    /// <summary>Source for <see cref="Glyph" />.</summary>
     private BitmapImage _glyph;
 
-    /// <summary>
-    /// Source for <see cref="IsConnected" />
-    /// </summary>
+    /// <summary>Source for <see cref="IsConnected" />.</summary>
     private bool _isConnected;
 
-    /// <summary>
-    /// Source for <see cref="IsPaired" />
-    /// </summary>
+    /// <summary>Source for <see cref="IsPaired" />.</summary>
     private bool _isPaired;
 
-    /// <summary>
-    /// Source for <see cref="Name" />
-    /// </summary>
+    /// <summary>Source for <see cref="Name" />.</summary>
     private string _name;
 
-    /// <summary>
-    /// result of finding all the services
-    /// </summary>
+    /// <summary>Result of finding all the services.</summary>
     private GattDeviceServicesResult _result;
 
-    /// <summary>
-    /// Queue to store the last 10 observed RSSI values
-    /// </summary>
+    /// <summary>Queue to store the last 10 observed RSSI values.</summary>
     private Queue<int> _rssiValue = new Queue<int>(10);
 
-    /// <summary>
-    /// Source for <see cref="RSSI"/>
-    /// </summary>
+    /// <summary>Source for <see cref="RSSI"/>.</summary>
     private int _rssi;
 
-    /// <summary>
-    /// Source for <see cref="ServiceCount" />
-    /// </summary>
+    /// <summary>Source for <see cref="ServiceCount" />.</summary>
     private int _serviceCount;
 
-    /// <summary>
-    /// Source for <see cref="Services" />
-    /// </summary>
-    private ObservableCollection<GattDeviceService> _services =
-        new ObservableCollection<GattDeviceService>();
+    /// <summary>Source for <see cref="Services" />.</summary>
+    private ObservableCollection<GattDeviceService> _services = new ObservableCollection<GattDeviceService>();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ObservableBluetoothLEDevice"/> class.
@@ -118,9 +93,7 @@ namespace Cross.BluetoothLe
       this.PropertyChanged += ObservableBluetoothLEDevice_PropertyChanged;
     }
 
-    /// <summary>
-    /// Gets the bluetooth device this class wraps
-    /// </summary>
+    /// <summary>Gets the bluetooth device this class wraps.</summary>
     /// <value>The bluetooth le device.</value>
     public BluetoothLEDevice BluetoothLEDevice
     {
@@ -133,9 +106,7 @@ namespace Cross.BluetoothLe
       }
     }
 
-    /// <summary>
-    /// Gets or sets the glyph of this bluetooth device
-    /// </summary>
+    /// <summary>Gets or sets the glyph of this bluetooth device.</summary>
     /// <value>The glyph.</value>
     public BitmapImage Glyph
     {
@@ -447,9 +418,7 @@ namespace Cross.BluetoothLe
     /// <summary>Load the glyph for this device.</summary>
     private async void LoadGlyph()
     {
-      await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-        CoreDispatcherPriority.Normal,
-        async () =>
+      await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
         {
           var deviceThumbnail = await DeviceInfo.GetGlyphThumbnailAsync();
           var glyphBitmapImage = new BitmapImage();
