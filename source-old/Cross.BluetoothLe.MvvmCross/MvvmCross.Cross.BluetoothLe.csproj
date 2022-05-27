@@ -36,7 +36,7 @@
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
       <ItemGroup>
-      <PackageReference Include="MvvmCross" Version="6.3.1" />
+      <PackageReference Include="MvvmCross" Version="7.1.2" />
     </ItemGroup>
   <ItemGroup>
     <Compile Include="**\*.shared.cs" />
