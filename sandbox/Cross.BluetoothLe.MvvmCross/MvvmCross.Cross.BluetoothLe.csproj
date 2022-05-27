@@ -71,6 +71,6 @@
     <Compile Include="**\*.tvos.*.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cross.BluetoothLe\DSoft.System.BluetoothLe.csproj" />
+    <ProjectReference Include="..\Cross.BluetoothLe\Cross.BluetoothLe.csproj" />
   </ItemGroup>
 </Project>

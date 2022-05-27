@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Cross.BluetoothLe.MvvmCross\DSoft.MvvmCross.System.BluetoothLe.csproj" />
+    <ProjectReference Include="..\..\Cross.BluetoothLe.MvvmCross\MvvmCross.Cross.BluetoothLe.csproj" />
   </ItemGroup>
 
   <ItemGroup>

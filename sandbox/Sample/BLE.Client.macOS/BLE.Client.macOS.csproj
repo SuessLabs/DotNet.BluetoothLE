@@ -113,9 +113,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Cross.BluetoothLe.MvvmCross\DSoft.MvvmCross.System.BluetoothLe.csproj">
+    <ProjectReference Include="..\..\Cross.BluetoothLe.MvvmCross\MvvmCross.Cross.BluetoothLe.csproj">
       <Project>{a5a90dcf-4d0b-49cb-a23b-f24158edfe34}</Project>
-      <Name>DSoft.MvvmCross.System.BluetoothLe</Name>
+      <Name>MvvmCross.Cross.BluetoothLe</Name>
     </ProjectReference>
     <ProjectReference Include="..\BLE.Client\BLE.Client.csproj">
       <Project>{dfe97be0-070b-43ad-bf37-50fd42b542d1}</Project>
