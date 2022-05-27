@@ -13,7 +13,7 @@
     <RootNamespace>MvvmCross.Cross.BluetoothLe</RootNamespace>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageId>DSoft.System.Bluetooth.MvvmCrossLe</PackageId>
+    <PackageId>MvvmCross.Cross.Bluetooth</PackageId>
     <Authors>newky2k, Adrian Seceleanu, Sven-Michael Stübe</Authors>
     <PackageLicenseExpression>Apache-2.0+</PackageLicenseExpression>
     <Description>Cross-platform Bluetooth Low Energy library, based on Plugin.BLE,  for iOS, Android, UWP, Mac, TVOS(Preview) and WatchOS(Preview)</Description>
