@@ -1,9 +1,9 @@
-﻿namespace System.BluetoothLe
+﻿namespace Cross.BluetoothLe
 {
-    public enum ConnectionInterval
-    {
-        Normal = 0,
-        High = 1,
-        Low = 2 
-    }
+  public enum ConnectionInterval
+  {
+    Normal = 0,
+    High = 1,
+    Low = 2
+  }
 }

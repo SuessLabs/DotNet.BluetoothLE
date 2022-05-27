@@ -2,9 +2,9 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
-using System.BluetoothLe;
+using Cross.BluetoothLe;
 
-namespace System.BluetoothLe.Extensions
+namespace Cross.BluetoothLe.Extensions
 {
     public static class GattResultExtensions
     {

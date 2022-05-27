@@ -1,4 +1,6 @@
-﻿namespace System.BluetoothLe
+﻿using System;
+
+namespace Cross.BluetoothLe
 {
   public struct KnownService
   {

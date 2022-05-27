@@ -1,6 +1,7 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
   static class DefaultTrace
   {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
     public partial class Adapter
     {

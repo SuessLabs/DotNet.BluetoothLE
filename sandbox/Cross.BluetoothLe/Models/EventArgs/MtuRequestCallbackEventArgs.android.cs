@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace System.BluetoothLe.EventArgs
+namespace Cross.BluetoothLe.EventArgs
 {
     public class MtuRequestCallbackEventArgs : System.EventArgs
     {

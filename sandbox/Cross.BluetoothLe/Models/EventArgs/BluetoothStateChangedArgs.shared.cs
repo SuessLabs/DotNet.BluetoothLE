@@ -1,6 +1,6 @@
-using System.BluetoothLe;
+﻿using Cross.BluetoothLe;
 
-namespace System.BluetoothLe.EventArgs
+namespace Cross.BluetoothLe.EventArgs
 {
     public class BluetoothStateChangedArgs : System.EventArgs
     {

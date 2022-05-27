@@ -1,11 +1,11 @@
-﻿using System.BluetoothLe;
+﻿using Cross.BluetoothLe;
 using System.Diagnostics;
 using Acr.UserDialogs;
 using MvvmCross;
 using MvvmCross.Forms.Platforms.Uap.Core;
 using Plugin.Permissions;
 using Plugin.Settings;
-using Trace = System.BluetoothLe.Trace;
+using Trace = Cross.BluetoothLe.Trace;
 
 namespace BLE.Client.UWP
 {

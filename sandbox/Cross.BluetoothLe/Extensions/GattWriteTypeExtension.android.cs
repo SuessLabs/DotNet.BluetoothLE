@@ -1,7 +1,7 @@
-using Android.Bluetooth;
-using System.BluetoothLe;
+﻿using Android.Bluetooth;
+using Cross.BluetoothLe;
 
-namespace System.BluetoothLe.Extensions
+namespace Cross.BluetoothLe.Extensions
 {
     internal static class GattWriteTypeExtension
     {

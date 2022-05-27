@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
   public partial class Service
   {

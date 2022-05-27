@@ -1,4 +1,4 @@
-﻿namespace System.BluetoothLe.EventArgs
+﻿namespace Cross.BluetoothLe.EventArgs
 {
   public class DeviceEventArgs : System.EventArgs
   {

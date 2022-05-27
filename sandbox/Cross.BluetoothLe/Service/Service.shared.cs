@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
   public partial class Service : IDisposable
   {
     private readonly List<Characteristic> _characteristics = new List<Characteristic>();
+
     public string Name => KnownServices.Lookup(Id).Name;
 
     public Guid Id => NativeGuid;

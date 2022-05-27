@@ -5,10 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
 using Windows.Security.Cryptography;
-using System.BluetoothLe.EventArgs;
-using System.BluetoothLe.Extensions;
+using Cross.BluetoothLe.EventArgs;
+using Cross.BluetoothLe.Extensions;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
     public partial class Characteristic
     {

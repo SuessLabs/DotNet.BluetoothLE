@@ -1,13 +1,13 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Android.Bluetooth;
-using System.BluetoothLe.EventArgs;
-using System.BluetoothLe.Extensions;
-using System.BluetoothLe.Utils;
+using Cross.BluetoothLe.EventArgs;
+using Cross.BluetoothLe.Extensions;
+using Cross.BluetoothLe.Utils;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
     public partial class Characteristic
     {
@@ -20,7 +20,6 @@ namespace System.BluetoothLe
         private readonly IGattCallback _gattCallback;
 
         #endregion
-
 
         #region Properties
         protected Guid NativeGuid => Guid.Parse(NativeCharacteristic.Uuid.ToString());

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.BluetoothLe.Exceptions;
+using Cross.BluetoothLe.Exceptions;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +8,10 @@ using System.Threading.Tasks;
 using CoreBluetooth;
 using Foundation;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
     public partial class Adapter
     {
-        #region Fields
-
-
         private readonly AutoResetEvent _stateChanged = new AutoResetEvent(false);
         private readonly CBCentralManager _centralManager;
         private readonly IBleCentralManagerDelegate _bleCentralManagerDelegate;
@@ -25,9 +22,6 @@ namespace System.BluetoothLe
         /// </summary>
         private readonly IDictionary<string, Device> _deviceOperationRegistry = new ConcurrentDictionary<string, Device>();
 
-        #endregion
-
-        #region Constructors
         public Adapter(CBCentralManager centralManager, IBleCentralManagerDelegate bleCentralManagerDelegate)
         {
             _centralManager = centralManager;
@@ -147,9 +141,6 @@ namespace System.BluetoothLe
                 };
         }
 
-        #endregion
-
-        #region Methods
         protected async Task StartScanningForDevicesNativeAsync(Guid[] serviceUuids, bool allowDuplicatesKey, CancellationToken scanCancellationToken)
         {
             // Wait for the PoweredOn state
@@ -403,7 +394,5 @@ namespace System.BluetoothLe
         {
             return Guid.ParseExact(peripherial.Identifier.AsString(), "d");
         }
-
-        #endregion
     }
 }

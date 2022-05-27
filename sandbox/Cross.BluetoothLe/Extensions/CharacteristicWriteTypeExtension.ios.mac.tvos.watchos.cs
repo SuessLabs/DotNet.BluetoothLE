@@ -1,8 +1,8 @@
-using System;
+﻿using System;
 using CoreBluetooth;
-using System.BluetoothLe;
+using Cross.BluetoothLe;
 
-namespace System.BluetoothLe.Extensions
+namespace Cross.BluetoothLe.Extensions
 {
     internal static class CharacteristicWriteTypeExtension
     {

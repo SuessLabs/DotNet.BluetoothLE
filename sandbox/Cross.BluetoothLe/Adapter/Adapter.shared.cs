@@ -1,6 +1,6 @@
 ﻿using System;
-using System.BluetoothLe.EventArgs;
-using System.BluetoothLe.Utils;
+using Cross.BluetoothLe.EventArgs;
+using Cross.BluetoothLe.Utils;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,18 +8,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
     public partial class Adapter
     {
-        #region Fields
         private CancellationTokenSource _scanCancellationTokenSource;
         private volatile bool _isScanning;
         private Func<Device, bool> _currentScanDeviceFilter;
 
-        #endregion
-
-        #region Events
         public event EventHandler<DeviceEventArgs> DeviceAdvertised;
         public event EventHandler<DeviceEventArgs> DeviceDiscovered;
         public event EventHandler<DeviceEventArgs> DeviceConnected;
@@ -27,10 +23,6 @@ namespace System.BluetoothLe
         public event EventHandler<DeviceErrorEventArgs> DeviceConnectionLost;
         public event EventHandler<DeviceErrorEventArgs> DeviceConnectionError;
         public event EventHandler ScanTimeoutElapsed;
-
-        #endregion
-
-        #region Properties
         public bool IsScanning
         {
             get => _isScanning;
@@ -51,9 +43,6 @@ namespace System.BluetoothLe
 
         public IReadOnlyList<Device> ConnectedDevices => ConnectedDeviceRegistry.Values.ToList();
 
-        #endregion
-
-        #region Methods
         public async Task StartScanningForDevicesAsync(Guid[] serviceUuids = null, Func<Device, bool> deviceFilter = null, bool allowDuplicatesKey = false, CancellationToken cancellationToken = default)
         {
             if (IsScanning)
@@ -241,15 +230,9 @@ namespace System.BluetoothLe
             });
         }
 
-        #endregion
-
-        #region Constructors
-
         public Adapter()
         {
 
         }
-
-        #endregion
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
-    public class DeviceDiscoverException : Exception
+  public class DeviceDiscoverException : Exception
+  {
+    public DeviceDiscoverException() : base("Could not find the specific device.")
     {
-        public DeviceDiscoverException() : base("Could not find the specific device.")
-        {
-        }
     }
+  }
 }

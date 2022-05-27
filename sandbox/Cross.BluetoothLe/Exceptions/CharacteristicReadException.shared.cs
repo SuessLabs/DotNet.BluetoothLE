@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
-    public class CharacteristicReadException : Exception
+  public class CharacteristicReadException : Exception
+  {
+    public CharacteristicReadException(string message) : base(message)
     {
-        public CharacteristicReadException(string message) : base(message)
-        {
-        }
     }
+  }
 }

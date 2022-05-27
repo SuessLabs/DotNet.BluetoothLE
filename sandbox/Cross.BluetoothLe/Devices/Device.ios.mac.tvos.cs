@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using CoreBluetooth;
 using Foundation;
-using System.BluetoothLe.Utils;
+using Cross.BluetoothLe.Utils;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
     public partial class Device
     {

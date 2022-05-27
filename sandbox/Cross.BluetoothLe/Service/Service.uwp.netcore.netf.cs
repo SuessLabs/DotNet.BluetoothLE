@@ -1,11 +1,12 @@
-﻿using System.BluetoothLe.Extensions;
+﻿using System;
+using Cross.BluetoothLe.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
 using Windows.Devices.Enumeration;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
   public partial class Service
   {

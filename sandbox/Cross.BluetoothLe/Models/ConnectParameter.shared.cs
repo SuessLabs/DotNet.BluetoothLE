@@ -1,4 +1,6 @@
-﻿namespace System.BluetoothLe
+﻿using System;
+
+namespace Cross.BluetoothLe
 {
   /// <summary>
   /// Connection parameters. Contains platform specific parameters needed to achieved connection

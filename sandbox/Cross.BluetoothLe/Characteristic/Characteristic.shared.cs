@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.BluetoothLe.EventArgs;
+using Cross.BluetoothLe.EventArgs;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
     public partial class Characteristic
     {

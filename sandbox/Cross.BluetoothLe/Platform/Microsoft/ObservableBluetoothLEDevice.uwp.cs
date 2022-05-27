@@ -1,4 +1,5 @@
-﻿using System.BluetoothLe.Extensions;
+﻿using System;
+using Cross.BluetoothLe.Extensions;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ using Windows.Devices.Enumeration;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Media.Imaging;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
   /*
   Windows Community Toolkit

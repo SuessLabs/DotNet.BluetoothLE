@@ -4,15 +4,11 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
     public partial class Device
     {
-        #region Properties
         internal object NativeDevice => throw new PlatformNotSupportedException();
-        #endregion
-
-        #region Methods
 
         public virtual void Dispose()
         {
@@ -32,7 +28,5 @@ namespace System.BluetoothLe
         private Task<int> RequestMtuNativeAsync(int requestValue) => throw new PlatformNotSupportedException();
 
         private bool UpdateConnectionIntervalNative(ConnectionInterval interval) => throw new PlatformNotSupportedException();
-
-        #endregion
     }
 }

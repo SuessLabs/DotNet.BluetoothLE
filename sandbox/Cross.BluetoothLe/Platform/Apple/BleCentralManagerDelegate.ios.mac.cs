@@ -1,7 +1,8 @@
-﻿using CoreBluetooth;
+﻿using System;
+using CoreBluetooth;
 using Foundation;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
   public interface IBleCentralManagerDelegate
   {

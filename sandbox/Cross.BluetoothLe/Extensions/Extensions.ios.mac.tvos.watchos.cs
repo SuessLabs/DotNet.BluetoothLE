@@ -1,7 +1,7 @@
 ﻿using System;
 using CoreBluetooth;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
     public static class CBUUIDExtension
     {

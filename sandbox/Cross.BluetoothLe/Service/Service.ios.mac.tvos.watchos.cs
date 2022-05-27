@@ -1,10 +1,11 @@
-﻿using System.BluetoothLe.Utils;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CoreBluetooth;
+using Cross.BluetoothLe.Utils;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
   public partial class Service
   {
@@ -25,6 +26,7 @@ namespace System.BluetoothLe
       _device = device.NativeDevice as CBPeripheral;
       _bleCentralManagerDelegate = bleCentralManagerDelegate;
     }
+
     internal Task<IList<Characteristic>> GetCharacteristicsNativeAsync()
     {
       var exception = new Exception($"Device '{Device.Id}' disconnected while fetching characteristics for service with {Id}.");

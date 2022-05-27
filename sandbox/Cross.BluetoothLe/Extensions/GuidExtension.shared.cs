@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace System.BluetoothLe.Extensions
+namespace Cross.BluetoothLe.Extensions
 {
     public static class GuidExtension
     {

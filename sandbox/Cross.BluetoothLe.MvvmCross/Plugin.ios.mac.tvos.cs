@@ -1,15 +1,14 @@
-﻿using System.BluetoothLe;
+﻿using Cross.BluetoothLe;
 using Foundation;
 using MvvmCross.Logging;
 using MvvmCross.Plugin;
 
 [assembly: Preserve]
-namespace MvvmCross.System.BluetoothLe
+namespace MvvmCross.Cross.BluetoothLe
 {
   [Preserve(AllMembers = true)]
   [MvxPlugin]
-  public class Plugin
-     : IMvxPlugin
+  public class Plugin : IMvxPlugin
   {
     public Plugin()
     {

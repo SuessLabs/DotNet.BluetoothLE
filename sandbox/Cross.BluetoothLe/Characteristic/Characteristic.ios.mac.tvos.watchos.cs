@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using CoreBluetooth;
 using Foundation;
-using System.BluetoothLe.EventArgs;
-using System.BluetoothLe.Extensions;
-using System.BluetoothLe.Utils;
+using Cross.BluetoothLe.EventArgs;
+using Cross.BluetoothLe.Extensions;
+using Cross.BluetoothLe.Utils;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
     public partial class Characteristic
     {

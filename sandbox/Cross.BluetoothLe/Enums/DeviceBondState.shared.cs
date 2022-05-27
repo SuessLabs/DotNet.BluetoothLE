@@ -1,9 +1,9 @@
-namespace System.BluetoothLe
+﻿namespace Cross.BluetoothLe
 {
-    public enum DeviceBondState
-    {
-        NotBonded,
-        Bonding,
-        Bonded
-    }
+  public enum DeviceBondState
+  {
+    NotBonded,
+    Bonding,
+    Bonded
+  }
 }

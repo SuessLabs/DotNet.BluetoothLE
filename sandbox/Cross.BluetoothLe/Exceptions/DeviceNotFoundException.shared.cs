@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace System.BluetoothLe.Exceptions
+namespace Cross.BluetoothLe.Exceptions
 {
-    public class DeviceNotFoundException : Exception
+  public class DeviceNotFoundException : Exception
+  {
+    public DeviceNotFoundException(Guid deviceId)
+      : base($"Device with Id: {deviceId} not found.")
     {
-        public DeviceNotFoundException(Guid deviceId) : base($"Device with Id: {deviceId} not found.")
-        {
-
-        }
     }
+  }
 }

@@ -1,12 +1,11 @@
-﻿using System.BluetoothLe;
+﻿using Cross.BluetoothLe;
 using MvvmCross.Logging;
 using MvvmCross.Plugin;
 
-namespace MvvmCross.System.BluetoothLe
+namespace MvvmCross.Cross.BluetoothLe
 {
   [MvxPlugin]
-  public class Plugin
-     : IMvxPlugin
+  public class Plugin : IMvxPlugin
   {
     public Plugin()
     {

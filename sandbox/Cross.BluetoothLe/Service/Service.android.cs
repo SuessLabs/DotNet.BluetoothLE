@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Android.Bluetooth;
-using System.BluetoothLe;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
   public partial class Service
   {
@@ -19,7 +18,6 @@ namespace System.BluetoothLe
 
     internal BluetoothGattService NativeService { get; private set; }
 
-
     internal Service(BluetoothGattService nativeService, BluetoothGatt gatt, IGattCallback gattCallback, Device device) : this(device)
     {
       NativeService = nativeService;
@@ -28,15 +26,12 @@ namespace System.BluetoothLe
       _gattCallback = gattCallback;
     }
 
-
-
     internal Task<IList<Characteristic>> GetCharacteristicsNativeAsync()
     {
       return Task.FromResult<IList<Characteristic>>(
         NativeService.Characteristics.Select(characteristic => new Characteristic(characteristic, _gatt, _gattCallback, this))
         .Cast<Characteristic>().ToList());
     }
-
 
     public virtual void Dispose()
     {

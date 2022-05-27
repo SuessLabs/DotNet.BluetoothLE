@@ -1,4 +1,4 @@
-﻿using System.BluetoothLe.Extensions;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -12,8 +12,9 @@ using System.Windows.Media.Imaging;
 using Windows.Devices.Bluetooth;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
 using Windows.Devices.Enumeration;
+using Cross.BluetoothLe.Extensions;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
   /*
     Windows Community Toolkit
@@ -371,7 +372,7 @@ namespace System.BluetoothLe
             throw new Exception(_result.ProtocolError.GetErrorString());
           }
         }
-      }, Windows.Threading.DispatcherPriority.Normal);
+      }, System.Windows.Threading.DispatcherPriority.Normal);
     }
 
     /// <summary>Does the in application pairing.</summary>
@@ -402,7 +403,7 @@ namespace System.BluetoothLe
 
         LoadGlyph();
         OnPropertyChanged("DeviceInfo");
-      }, Windows.Threading.DispatcherPriority.Normal);
+      }, System.Windows.Threading.DispatcherPriority.Normal);
     }
 
     /// <summary>Overrides the ToString function to return the name of the device.</summary>
@@ -432,7 +433,7 @@ namespace System.BluetoothLe
         Name = BluetoothLEDevice.Name;
 
         OnNameChanged?.Invoke(this, BluetoothLEDevice.Name);
-      }, Windows.Threading.DispatcherPriority.Normal);
+      }, System.Windows.Threading.DispatcherPriority.Normal);
     }
 
     /// <summary>Executes when the connection state changes.</summary>
@@ -444,7 +445,7 @@ namespace System.BluetoothLe
           {
             IsPaired = DeviceInfo.Pairing.IsPaired;
             IsConnected = BluetoothLEDevice.ConnectionStatus == BluetoothConnectionStatus.Connected;
-          }, Windows.Threading.DispatcherPriority.Normal);
+          }, System.Windows.Threading.DispatcherPriority.Normal);
     }
 
     /// <summary>Load the glyph for this device.</summary>
@@ -456,7 +457,7 @@ namespace System.BluetoothLe
         var glyphBitmapImage = new BitmapImage();
         glyphBitmapImage.StreamSource = deviceThumbnail.AsStream();
         Glyph = glyphBitmapImage;
-      }, Windows.Threading.DispatcherPriority.Normal);
+      }, System.Windows.Threading.DispatcherPriority.Normal);
     }
   }
 }

@@ -1,8 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Windows.Devices.Bluetooth;
 using Windows.Devices.Radios;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
   public partial class BluetoothLE
   {

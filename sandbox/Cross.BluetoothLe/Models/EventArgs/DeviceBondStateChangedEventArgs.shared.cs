@@ -1,10 +1,11 @@
-﻿using System.BluetoothLe;
+﻿using Cross.BluetoothLe;
 
-namespace System.BluetoothLe.EventArgs
+namespace Cross.BluetoothLe.EventArgs
 {
   public class DeviceBondStateChangedEventArgs : System.EventArgs
   {
     public Device Device { get; set; }
+
     public DeviceBondState State { get; set; }
   }
 }

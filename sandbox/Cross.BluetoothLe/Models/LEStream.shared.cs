@@ -1,12 +1,12 @@
 ﻿using System;
-using System.BluetoothLe.EventArgs;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using Cross.BluetoothLe.EventArgs;
 
-namespace System.BluetoothLe.Models
+namespace Cross.BluetoothLe.Models
 {
   public class LEStream : Stream
   {

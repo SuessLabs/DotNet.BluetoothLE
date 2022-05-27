@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
     public interface ICancellationMaster
     {

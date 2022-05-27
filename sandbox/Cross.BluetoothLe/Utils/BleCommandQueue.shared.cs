@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace System.BluetoothLe.Utils
+namespace Cross.BluetoothLe.Utils
 {
   public class BleCommandQueue
   {

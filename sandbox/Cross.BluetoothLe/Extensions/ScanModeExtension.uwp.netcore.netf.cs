@@ -1,9 +1,9 @@
-using System;
+﻿using System;
 using Windows.Devices.Bluetooth.Advertisement;
-using System.BluetoothLe;
-using Trace = System.BluetoothLe.Trace;
+using Cross.BluetoothLe;
+using Trace = Cross.BluetoothLe.Trace;
 
-namespace System.BluetoothLe.Extensions
+namespace Cross.BluetoothLe.Extensions
 {
     /// <summary>
     /// See https://github.com/xabre/xamarin-bluetooth-le/blob/master/doc/scanmode_mapping.md

@@ -1,8 +1,9 @@
-﻿using System.BluetoothLe.EventArgs;
-using System.BluetoothLe.Extensions;
+﻿using System;
+using Cross.BluetoothLe.EventArgs;
+using Cross.BluetoothLe.Extensions;
 using Android.Bluetooth;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
   public interface IGattCallback
   {

@@ -1,13 +1,15 @@
-﻿using System.BluetoothLe.BroadcastReceivers;
-using System.BluetoothLe.Extensions;
-using System.BluetoothLe.Utils;
+﻿using System;
+
 using Android.App;
 using Android.Bluetooth;
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using Cross.BluetoothLe.BroadcastReceivers;
+using Cross.BluetoothLe.Extensions;
+using Cross.BluetoothLe.Utils;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
   public partial class BluetoothLE
   {

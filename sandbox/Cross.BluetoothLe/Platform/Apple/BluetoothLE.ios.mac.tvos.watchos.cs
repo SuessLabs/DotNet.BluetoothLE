@@ -1,8 +1,9 @@
-﻿using System.BluetoothLe.Extensions;
+﻿using System;
+using Cross.BluetoothLe.Extensions;
 using CoreBluetooth;
 using CoreFoundation;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
   public partial class BluetoothLE
   {

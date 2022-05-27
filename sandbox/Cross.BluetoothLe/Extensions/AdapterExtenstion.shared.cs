@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.BluetoothLe.EventArgs;
-using System.BluetoothLe.Utils;
+using Cross.BluetoothLe.EventArgs;
+using Cross.BluetoothLe.Utils;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
     public static class AdapterExtenstion
     {

@@ -1,10 +1,10 @@
-using System;
+﻿using System;
 using Android.OS;
-using System.BluetoothLe;
+using Cross.BluetoothLe;
 using AndroidScanMode = Android.Bluetooth.LE.ScanMode;
-using Trace = System.BluetoothLe.Trace;
+using Trace = Cross.BluetoothLe.Trace;
 
-namespace System.BluetoothLe.Extensions
+namespace Cross.BluetoothLe.Extensions
 {
     /// <summary>
     /// See https://developer.android.com/reference/android/bluetooth/le/ScanSettings.html

@@ -1,6 +1,7 @@
-﻿using System.BluetoothLe.EventArgs;
+﻿using System;
+using Cross.BluetoothLe.EventArgs;
 
-namespace System.BluetoothLe
+namespace Cross.BluetoothLe
 {
   public partial class BluetoothLE
   {
