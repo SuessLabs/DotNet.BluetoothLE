@@ -1,9 +1,6 @@
-using System;
-
-namespace System.BluetoothLe.EventArgs
+﻿namespace System.BluetoothLe.EventArgs
 {
-    public class ServicesDiscoveredCallbackEventArgs : System.EventArgs
-    {
-
-    }
+  public class ServicesDiscoveredCallbackEventArgs : System.EventArgs
+  {
+  }
 }

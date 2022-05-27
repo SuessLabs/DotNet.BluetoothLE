@@ -1,7 +1,7 @@
-namespace System.BluetoothLe.EventArgs
+﻿namespace System.BluetoothLe.EventArgs
 {
-    public class DeviceErrorEventArgs : DeviceEventArgs
-    { 
-        public string ErrorMessage;
-    }
+  public class DeviceErrorEventArgs : DeviceEventArgs
+  {
+    public string ErrorMessage;
+  }
 }

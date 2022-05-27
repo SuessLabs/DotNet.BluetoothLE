@@ -1,9 +1,7 @@
-using System.BluetoothLe;
-
-namespace System.BluetoothLe.EventArgs
+﻿namespace System.BluetoothLe.EventArgs
 {
-    public class DeviceEventArgs : System.EventArgs
-    {
-        public Device Device;
-    }
+  public class DeviceEventArgs : System.EventArgs
+  {
+    public Device Device;
+  }
 }
