@@ -9,7 +9,7 @@ using Cross.BluetoothLe.Utils;
 
 namespace Cross.BluetoothLe
 {
-  public partial class Adapter
+  public partial class Adapter  // : IAdapter
   {
     private CancellationTokenSource _scanCancellationTokenSource;
     private volatile bool _isScanning;
@@ -120,6 +120,7 @@ namespace Cross.BluetoothLe
                 complete(true);
               }
             },
+
             subscribeComplete: handler => DeviceConnected += handler,
             unsubscribeComplete: handler => DeviceConnected -= handler,
 
@@ -158,6 +159,7 @@ namespace Cross.BluetoothLe
              complete(true);
            }
          }),
+
          subscribeComplete: handler => DeviceDisconnected += handler,
          unsubscribeComplete: handler => DeviceDisconnected -= handler,
 
@@ -169,6 +171,7 @@ namespace Cross.BluetoothLe
              reject(new Exception("Disconnect operation exception"));
            }
          }),
+
          subscribeReject: handler => DeviceConnectionError += handler,
          unsubscribeReject: handler => DeviceConnectionError -= handler);
     }

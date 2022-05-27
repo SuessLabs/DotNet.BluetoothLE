@@ -64,6 +64,7 @@ namespace Cross.BluetoothLe.Utils
       {
         var shouldReleaseSemaphore = false;
         var shouldCompleteTask = tcs == null;
+
         tcs = tcs ?? new TaskCompletionSource<TReturn>();
         if (await QueueSemaphore.WaitAsync(TimeSpan.FromSeconds(SemaphoreQueueTimeout), token))
         {

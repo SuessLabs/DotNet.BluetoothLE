@@ -3,8 +3,6 @@ using System.Diagnostics;
 using Acr.UserDialogs;
 using MvvmCross;
 using MvvmCross.Forms.Platforms.Uap.Core;
-using Plugin.Permissions;
-using Plugin.Settings;
 using Trace = Cross.BluetoothLe.Trace;
 using MvvmCross.IoC;
 
@@ -17,8 +15,6 @@ namespace BLE.Client.UWP
       var result = base.InitializeIoC();
 
       Mvx.IoCProvider.RegisterSingleton(() => UserDialogs.Instance);
-      Mvx.IoCProvider.RegisterSingleton(() => CrossSettings.Current);
-      Mvx.IoCProvider.RegisterSingleton(() => CrossPermissions.Current);
       Mvx.IoCProvider.RegisterSingleton(() => BluetoothLE.Current);
       Mvx.IoCProvider.RegisterSingleton(() => BluetoothLE.Current.Adapter);
 

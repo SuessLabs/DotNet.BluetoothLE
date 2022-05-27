@@ -81,6 +81,7 @@
     <None Include="Entitlements.plist" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\PlatformHelpers.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Setup.cs" />
@@ -101,12 +102,6 @@
     </PackageReference>
     <PackageReference Include="MvvmCross.Forms">
       <Version>7.1.2</Version>
-    </PackageReference>
-    <PackageReference Include="Plugin.Permissions">
-      <Version>3.0.0.12</Version>
-    </PackageReference>
-    <PackageReference Include="Xam.Plugins.Settings">
-      <Version>3.1.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
       <Version>5.0.0.2401</Version>
