@@ -39,7 +39,6 @@ As developers, some of us want bare-bones, down to the metal code without the ne
 ## References
 
 * [Plugin.Ble](https://github.com/xabre/xamarin-bluetooth-le)
-  * [DSoft.System.BluetoothLe](https://github.com/newky2k/DSoft.System.BluetoothLe) - _(Last Update: Oct, 2021; .NET Core support)_
 * [Shiny](https://github.com/shinyorg/shiny)
   * [ACR BluetoothLE](https://github.com/aritchie/bluetoothle) - _(Archived: 2020)_
 
