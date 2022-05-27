@@ -8,8 +8,7 @@ namespace BLE.Client.Droid
   [Activity(ScreenOrientation = ScreenOrientation.Portrait,
     ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
     LaunchMode = LaunchMode.SingleTask)]
-  public class MainActivity
-    : MvxFormsAppCompatActivity
+  public class MainActivity : MvxFormsAppCompatActivity
   {
     protected override void OnCreate(Bundle bundle)
     {
@@ -17,6 +16,13 @@ namespace BLE.Client.Droid
       TabLayoutResource = Resource.Layout.tabs;
 
       base.OnCreate(bundle);
+    }
+
+    public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
+    {
+      Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+      base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
     }
   }
 }

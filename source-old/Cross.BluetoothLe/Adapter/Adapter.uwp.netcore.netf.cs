@@ -91,14 +91,15 @@ namespace Cross.BluetoothLe
       }
     }
 
+    // TODO: protected void DisconnectDeviceNative(IDevice device)
     protected void DisconnectDeviceNative(Device device)
     {
       // Windows doesn't support disconnecting, so currently just dispose of the device
       Trace.Message($"Disconnected from device with ID:  {device.Id.ToString()}");
 
-      ((Device)device).ClearServices();
       if (device.NativeDevice is ObservableBluetoothLEDevice nativeDevice)
       {
+        ((Device)device).ClearServices();
         nativeDevice.BluetoothLEDevice.Dispose();
         ConnectedDeviceRegistry.TryRemove(device.Id.ToString(), out _);
       }
