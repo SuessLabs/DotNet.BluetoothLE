@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32314.265
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cross.BluetoothLe", "Cross.BluetoothLe\Cross.BluetoothLe.csproj", "{1A9FBDE4-77B4-48CF-A378-958A2A6C5869}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D89015FB-0454-4242-ABD5-8D5B813915B7}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		CodeMaid.config = CodeMaid.config
+		..\readme.md = ..\readme.md
+		StyleCop.Analyzers.ruleset = StyleCop.Analyzers.ruleset
+		stylecop.json = stylecop.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A9FBDE4-77B4-48CF-A378-958A2A6C5869}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A9FBDE4-77B4-48CF-A378-958A2A6C5869}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A9FBDE4-77B4-48CF-A378-958A2A6C5869}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A9FBDE4-77B4-48CF-A378-958A2A6C5869}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {28A9F0FC-F959-427A-A9B6-4EED2FE109EE}
+	EndGlobalSection
+EndGlobal

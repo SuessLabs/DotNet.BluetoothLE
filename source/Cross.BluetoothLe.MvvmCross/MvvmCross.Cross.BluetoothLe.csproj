@@ -14,12 +14,12 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageId>MvvmCross.Cross.Bluetooth</PackageId>
-    <Authors>newky2k, Adrian Seceleanu, Sven-Michael Stübe</Authors>
+    <Authors>Suess Labs</Authors>
     <PackageLicenseExpression>Apache-2.0+</PackageLicenseExpression>
-    <Description>Cross-platform Bluetooth Low Energy library, based on Plugin.BLE,  for iOS, Android, UWP, Mac, TVOS(Preview) and WatchOS(Preview)</Description>
+    <Description>Cross-platform Bluetooth Low Energy library, based on Plugin.BLE, for iOS, Android, UWP, Mac, TVOS(Preview) and WatchOS(Preview)</Description>
     <AssemblyName>MvvmCross.Cross.BluetoothLe</AssemblyName>
     <SignAssembly>false</SignAssembly>
-    <AssemblyOriginatorKeyFile>DSoft.snk</AssemblyOriginatorKeyFile>
+    <BaseOutputPath>..\..\output</BaseOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
     <DebugSymbols>true</DebugSymbols>
