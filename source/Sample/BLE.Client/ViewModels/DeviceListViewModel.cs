@@ -50,7 +50,7 @@ namespace BLE.Client.ViewModels
 
     public ObservableCollection<DeviceListItemViewModel> Devices { get; set; } = new ObservableCollection<DeviceListItemViewModel>();
 
-    public bool IsRefreshing => (Adapter != null) ? Adapter.IsScanning : false;
+    public bool IsRefreshing => Adapter?.IsScanning ?? false;
 
     public bool IsStateOn => _bluetoothLe.IsOn;
 
