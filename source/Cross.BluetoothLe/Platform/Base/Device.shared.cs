@@ -19,36 +19,24 @@ namespace Cross.BluetoothLe
     private int _rssi;
     private Guid _id;
 
-    /// <summary>
-    /// Gets or sets the Id of the device
-    /// </summary>
-    /// <value>
-    /// The Id.
-    /// </value>
+    /// <summary>Gets or sets the Id of the device.</summary>
+    /// <value>The Id.</value>
     public Guid Id
     {
       get => _id;
       set { _id = value; NotifyPropertyChanged(nameof(Id)); NotifyPropertyChanged(nameof(NameOrId)); }
     }
 
-    /// <summary>
-    /// Gets or sets the name of the device
-    /// </summary>
-    /// <value>
-    /// The name of the device
-    /// </value>
+    /// <summary>Gets or sets the name of the device.</summary>
+    /// <value>The name of the device.</value>
     public string Name
     {
       get => _name;
       protected set { _name = value; NotifyPropertyChanged(nameof(Name)); NotifyPropertyChanged(nameof(NameOrId)); }
     }
 
-    /// <summary>
-    /// Gets or sets the Rssi(Received Signal Strength Indicator) value for the device
-    /// </summary>
-    /// <value>
-    /// The rssi.
-    /// </value>
+    /// <summary>Gets or sets the Rssi(Received Signal Strength Indicator) value for the device.</summary>
+    /// <value>The rssi.</value>
     public int Rssi
     {
       get => _rssi;
@@ -61,12 +49,8 @@ namespace Cross.BluetoothLe
 
     CancellationTokenSource ICancellationMaster.TokenSource { get; set; } = new CancellationTokenSource();
 
-    /// <summary>
-    /// Gets the name if set or the Id if not
-    /// </summary>
-    /// <value>
-    /// The name or Id.
-    /// </value>
+    /// <summary>Gets the name if set or the Id if not.</summary>
+    /// <value>The name or Id.</value>
     public string NameOrId => (string.IsNullOrWhiteSpace(Name)) ? Id.ToString() : Name;
 
     protected Device()
@@ -83,9 +67,7 @@ namespace Cross.BluetoothLe
       lock (KnownServices)
       {
         if (KnownServices.Any())
-        {
           return KnownServices.ToArray();
-        }
       }
 
       using (var source = this.GetCombinedSource(cancellationToken))
@@ -94,7 +76,9 @@ namespace Cross.BluetoothLe
 
         lock (KnownServices)
         {
-          KnownServices.AddRange(services);
+          if (services != null)
+            KnownServices.AddRange(services);
+
           return KnownServices.ToArray();
         }
       }
@@ -141,14 +125,10 @@ namespace Cross.BluetoothLe
     public override bool Equals(object other)
     {
       if (other == null)
-      {
         return false;
-      }
 
       if (other.GetType() != GetType())
-      {
         return false;
-      }
 
       var otherDeviceBase = (Device)other;
       return Id == otherDeviceBase.Id;

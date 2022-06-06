@@ -1,5 +1,4 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/3.0.23">
-
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;Xamarin.TVOS10;Xamarin.WatchOS10;MonoAndroid90;tizen40;</TargetFrameworks>
     <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0.19041;netcoreapp3.1;net461;net5.0-windows10.0.19041.0;</TargetFrameworks>
@@ -22,7 +21,7 @@
     <RepositoryUrl>https://github.com/SuessLabs/Cross.BluetoothLe</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/SuessLabs/Cross.BluetoothLe</PackageProjectUrl>
-    <PackageReleaseNotes>- Ported changes from PluginBle
+    <PackageReleaseNotes>
 - Added NET 5.x support
 - Update windows apis to 10.0.19041
 </PackageReleaseNotes>
