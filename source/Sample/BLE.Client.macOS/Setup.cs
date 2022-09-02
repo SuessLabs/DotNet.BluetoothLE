@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
+using Microsoft.Extensions.Logging;
 using MvvmCross;
 using MvvmCross.Forms.Platforms.Mac.Core;
 using MvvmCross.IoC;
@@ -20,7 +21,7 @@ namespace BLE.Client.macOS
 
       // Mvx.IoCProvider.RegisterSingleton(() => CrossBluetoothLE.Current);
       // Mvx.IoCProvider.RegisterSingleton(() => CrossBluetoothLE.Current.Adapter);
-      Mvx.IoCProvider.RegisterSingleton(() => new UserDialogsMac());
+      Mvx.IoCProvider.RegisterSingleton<IUserDialogs>(() => new UserDialogsMac());
 
       return result;
     }
@@ -36,6 +37,18 @@ namespace BLE.Client.macOS
         return new List<Assembly>(base.GetViewAssemblies().Union(new[] { typeof(MvvmCross.Plugins.BLE.iOS.Plugin).GetTypeInfo().Assembly }));
     }
     */
+
+    /// <inheritdoc/>
+    protected override ILoggerProvider CreateLogProvider()
+    {
+      return null;
+    }
+
+    /// <inheritdoc/>
+    protected override ILoggerFactory CreateLogFactory()
+    {
+      return null;
+    }
 
     private class UserDialogsMac : IUserDialogs
     {
@@ -175,6 +188,7 @@ namespace BLE.Client.macOS
 
       public void ShowLoading(string title = null, MaskType? maskType = null)
       {
+
       }
 
       public IDisposable TimePrompt(TimePromptConfig config)

@@ -1,6 +1,7 @@
 ﻿using Cross.BluetoothLe;
 using Foundation;
-using MvvmCross.Logging;
+using Microsoft.Extensions.Logging;
+using MvvmCross.IoC;
 using MvvmCross.Plugin;
 
 [assembly: Preserve]
@@ -12,8 +13,9 @@ namespace MvvmCross.Cross.BluetoothLe
   {
     public Plugin()
     {
-      var log = Mvx.IoCProvider.Resolve<IMvxLog>();
-      Trace.TraceImplementation = log.Trace;
+      ILogger<Plugin> log;
+      if (Mvx.IoCProvider.TryResolve(out log))
+        Trace.TraceImplementation = log.LogTrace;
     }
 
     public void Load()
@@ -21,6 +23,8 @@ namespace MvvmCross.Cross.BluetoothLe
       Trace.Message("Loading bluetooth low energy plugin");
       Mvx.IoCProvider.RegisterSingleton(() => BluetoothLE.Current);
       Mvx.IoCProvider.RegisterSingleton(() => BluetoothLE.Current.Adapter);
+      ////Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IBluetoothLE>(() => CrossBluetoothLE.Current);
+      ////Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IAdapter>(() => Mvx.IoCProvider.Resolve<IBluetoothLE>().Adapter);
     }
   }
 }

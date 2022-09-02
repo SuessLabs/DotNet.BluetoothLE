@@ -5,6 +5,8 @@ using MvvmCross;
 using MvvmCross.Forms.Platforms.Uap.Core;
 using Trace = Cross.BluetoothLe.Trace;
 using MvvmCross.IoC;
+using Acr.UserDialogs.Infrastructure;
+using Microsoft.Extensions.Logging;
 
 namespace BLE.Client.UWP
 {
@@ -21,6 +23,23 @@ namespace BLE.Client.UWP
       Trace.TraceImplementation = (s, objects) => Debug.WriteLine(s, objects);
 
       return result;
+    }
+
+    protected override ILoggerProvider CreateLogProvider()
+    {
+      ////return new SerilogLoggerProvider();
+      return null;
+    }
+
+    protected override ILoggerFactory CreateLogFactory()
+    {
+      ////Log.Logger = new LoggerConfiguration()
+      ////    .MinimumLevel.Debug()
+      ////    .WriteTo.Debug()
+      ////    .CreateLogger();
+      ////
+      ////return new SerilogLoggerFactory();
+      return null;
     }
   }
 }

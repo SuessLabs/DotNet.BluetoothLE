@@ -5,7 +5,6 @@ using Android.Runtime;
 
 namespace BLE.Client.Droid
 {
-  //You can specify additional application information in this attribute
   [Application]
   public class MainApplication : Application, Application.IActivityLifecycleCallbacks
   {
@@ -18,7 +17,8 @@ namespace BLE.Client.Droid
     {
       base.OnCreate();
       RegisterActivityLifecycleCallbacks(this);
-      // A great place to initialize Xamarin.Insights and Dependency Services!
+
+      // Initialize Xamarin.Insights and Dependency Services Here
     }
 
     public override void OnTerminate()
