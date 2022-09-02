@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Cross.BluetoothLe;
+using Microsoft.Extensions.Logging;
 using MvvmCross;
 using MvvmCross.Logging;
 using MvvmCross.ViewModels;
@@ -16,22 +17,22 @@ namespace BLE.Client.ViewModels
     protected const string CharacteristicIdKey = "CharacteristicIdNavigationKey";
     protected const string DescriptorIdKey = "DescriptorIdNavigationKey";
 
-    private readonly IMvxLog _log;
+    private readonly ILogger<BaseViewModel> _log;
 
     public BaseViewModel(Adapter adapter)
     {
       Adapter = adapter;
-      _log = Mvx.IoCProvider.Resolve<IMvxLog>();
+      Mvx.IoCProvider.TryResolve(out _log);
     }
 
     public override void ViewAppeared()
     {
-      _log.Trace("ViewAppeared {0}", GetType().Name);
+      _log?.LogTrace("ViewAppeared {0}", GetType().Name);
     }
 
     public override void ViewDisappeared()
     {
-      _log.Trace("ViewDisappeared {0}", GetType().Name);
+      _log?.LogTrace("ViewDisappeared {0}", GetType().Name);
     }
 
     public override void Prepare(MvxBundle parameters)

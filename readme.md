@@ -1,6 +1,6 @@
 # Cross-Platform Bluetooth LE Plugin
 
-> WARNING: Work in progress!
+> STATUS: This project is in the Beta-2 phase.
 
 Cross.BluetoothLE is a cross-platform plugin for accessing Bluetooth LE in your Android, Linux, Mac, Windows (UWP, .NET Core) applications. This allows developers to maintain the same base code which can be deployed across multiple platforms.
 
@@ -10,12 +10,12 @@ As developers, some of us want bare-bones, down to the metal code without the ne
 
 | Platform | Version | Status |
 |-|-|-|
-| Android | 4.3 | TBA
-| Linux   | Ubuntu 20.04, RPi 4 | TBA
-| UWP     | 1709 - 10.0.16299    | TBA
-| iOS     |     | TBA
-| Mac     | 10.9 (Maverics) | TBA
-| Tizen   |  | TBA
+| Android | 10.0            | _Beta_
+| UWP     | 19041           | _Beta_
+| iOS     |                 | _Beta_
+| Mac     | 10.9 (Maverics) | _Beta_
+| Linux   |                 | TBA
+| Tizen   |                 | TBA
 
 ## Setup
 
@@ -28,21 +28,43 @@ As developers, some of us want bare-bones, down to the metal code without the ne
 <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 ```
 
-### Linux
+Android 12 and above
+
+```xml
+<uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+<uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+```
 
 ### Windows
 
+Set in your `.appxmanifest` file
+
+```xml
+<DeviceCapability Name="bluetooth" />
+```
+
 ### iOS
 
-## Usage
+```xml
+<key>UIBackgroundModes</key>
+<array>
+    <!-- for connecting to devices (client) -->
+    <string>bluetooth-central</string>
 
-## References
+    <!-- for server configurations if needed -->
+    <string>bluetooth-peripheral</string>
+</array>
 
-* [Plugin.Ble](https://github.com/xabre/xamarin-bluetooth-le)
-* [Shiny](https://github.com/shinyorg/shiny)
-  * [ACR BluetoothLE](https://github.com/aritchie/bluetoothle) - _(Archived: 2020)_
+<!-- Description of the Bluetooth request message (required on iOS 10, deprecated) -->
+<key>NSBluetoothPeripheralUsageDescription</key>
+<string>YOUR CUSTOM MESSAGE</string>
 
-Invalid References:
+<!-- Description of the Bluetooth request message (required on iOS 13) -->
+<key>NSBluetoothAlwaysUsageDescription</key>
+<string>YOUR CUSTOM MESSAGE</string>
+```
 
-* [ble.net](https://github.com/nexussays/ble.net) - _(Last update: Aug, 2019)_
-  * Does not appear to provide full functionality
+### Linux
+
+_Coming soon._
