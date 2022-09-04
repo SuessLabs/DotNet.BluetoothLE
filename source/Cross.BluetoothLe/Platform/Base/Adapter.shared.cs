@@ -9,7 +9,7 @@ using Cross.BluetoothLe.Utils;
 
 namespace Cross.BluetoothLe
 {
-  public partial class Adapter  // : IAdapter
+  public partial class Adapter //// : IAdapter
   {
     private CancellationTokenSource _scanCancellationTokenSource;
     private volatile bool _isScanning;
