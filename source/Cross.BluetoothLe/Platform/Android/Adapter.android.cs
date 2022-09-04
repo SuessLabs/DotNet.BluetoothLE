@@ -145,18 +145,16 @@ namespace Cross.BluetoothLe
       ((Device)device).Disconnect();
     }
 
-    public async Task<Device> ConnectToKnownDeviceAsync(Guid deviceGuid, ConnectParameters connectParameters = default(ConnectParameters), CancellationToken cancellationToken = default(CancellationToken), bool dontThrowExceptionOnNotFound = false)
+    public async Task<Device> ConnectToKnownDeviceAsync(
+      Guid deviceGuid,
+      ConnectParameters connectParameters = default(ConnectParameters),
+      CancellationToken cancellationToken = default(CancellationToken))
     {
       var macBytes = deviceGuid.ToByteArray().Skip(10).Take(6).ToArray();
       var nativeDevice = _bluetoothAdapter.GetRemoteDevice(macBytes);
 
-      if (nativeDevice == null)
-      {
-        if (dontThrowExceptionOnNotFound == true)
-          return null;
-
+      if (nativeDevice is null)
         throw new DeviceNotFoundException(deviceGuid);
-      }
 
       var device = new Device(this, nativeDevice, null, 0, new byte[] { });
 

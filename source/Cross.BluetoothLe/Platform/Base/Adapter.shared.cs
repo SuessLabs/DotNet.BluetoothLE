@@ -29,6 +29,10 @@ namespace Cross.BluetoothLe
 
     public event EventHandler ScanTimeoutElapsed;
 
+    public Adapter()
+    {
+    }
+
     public bool IsScanning
     {
       get => _isScanning;
@@ -36,6 +40,7 @@ namespace Cross.BluetoothLe
     }
 
     public int ScanTimeout { get; set; } = 10000;
+
     public ScanMode ScanMode { get; set; } = ScanMode.LowPower;
 
     protected ConcurrentDictionary<Guid, Device> DiscoveredDevicesRegistry { get; } = new ConcurrentDictionary<Guid, Device>();
@@ -237,10 +242,6 @@ namespace Cross.BluetoothLe
         Device = device,
         ErrorMessage = errorMessage
       });
-    }
-
-    public Adapter()
-    {
     }
   }
 }

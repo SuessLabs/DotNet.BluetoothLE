@@ -46,10 +46,9 @@ namespace Cross.BluetoothLe
     /// <summary>List of last discovered devices.</summary>
     IReadOnlyList<Device> DiscoveredDevices { get; }
 
-    /// <summary>
-    /// List of currently connected devices.
-    /// </summary>
+    /// <summary>List of currently connected devices.</summary>
     IReadOnlyList<Device> ConnectedDevices { get; }
+    ////IReadOnlyList<IDevice> ConnectedDevices { get; }
 
     /// <summary>
     ///   Starts scanning for BLE devices that fulfill the <paramref name="deviceFilter"/>.
@@ -65,10 +64,12 @@ namespace Cross.BluetoothLe
     /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is None.</param>
     /// <returns>A task that represents the asynchronous read operation. The Task will finish after the scan has ended.</returns>
     Task StartScanningForDevicesAsync(Guid[] serviceUuids = null, Func<Device, bool> deviceFilter = null, bool allowDuplicatesKey = false, CancellationToken cancellationToken = default);
-
+    ////Task ScanStartAsync(Guid[] serviceUuids = null, Func<Device, bool> deviceFilter = null, bool allowDuplicatesKey = false, CancellationToken cancellationToken = default);
+    
     /// <summary>Stops scanning for BLE devices.</summary>
     /// <returns>A task that represents the asynchronous read operation. The Task will finish after the scan has ended.</returns>
     Task StopScanningForDevicesAsync();
+    ////Task ScanStopAsync();
 
     /// <summary>
     /// Connects to the <paramref name="device"/>.
@@ -80,11 +81,13 @@ namespace Cross.BluetoothLe
     /// <exception cref="DeviceConnectionException">Thrown if the device connection fails.</exception>
     /// <exception cref="ArgumentNullException">Thrown if the <paramref name="device"/> is null.</exception>
     Task ConnectToDeviceAsync(Device device, ConnectParameters connectParameters = default, CancellationToken cancellationToken = default);
+    ////Task ConnectAsync(IDevice device, ConnectParameters connectParameters = default, CancellationToken cancellationToken = default);
 
     /// <summary>Disconnects from the <paramref name="device"/>.</summary>
     /// <param name="device">Device to connect from.</param>
     /// <returns>A task that represents the asynchronous read operation. The Task will finish after the device has been disconnected successfuly.</returns>
     Task DisconnectDeviceAsync(Device device);
+    ////Task DisconnectAsync(Device device);
 
     /// <summary>Connects to a device with a known GUID without scanning and if in range. Does not scan for devices.</summary>
     /// <param name="deviceGuid"></param>
@@ -92,6 +95,7 @@ namespace Cross.BluetoothLe
     /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is None.</param>
     /// <returns></returns>
     Task<Device> ConnectToKnownDeviceAsync(Guid deviceGuid, ConnectParameters connectParameters = default, CancellationToken cancellationToken = default);
+    ////Task<IDevice> ConnectAsync(Guid deviceGuid, ConnectParameters connectParameters = default, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///   Returns all BLE devices connected to the system. For android the implementations uses getConnectedDevices(GATT) & getBondedDevices()
@@ -106,5 +110,6 @@ namespace Cross.BluetoothLe
     /// <param name="services">IMPORTANT: Only considered by iOS due to platform limitations. Filters devices by advertised services. SET THIS VALUE FOR ANY RESULTS</param>
     /// <returns>List of Devices connected to the OS.  In case of no devices the list is empty.</returns>
     IReadOnlyList<Device> GetSystemConnectedOrPairedDevices(Guid[] services = null);
+    ////IReadOnlyList<Device> GetKnownDevices(Guid[] services = null);
   }
 }
