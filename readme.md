@@ -14,7 +14,7 @@ As developers, some of us want bare-bones, down to the metal code without the ne
 | UWP     | 19041           | _Beta_
 | iOS     |                 | _Beta_
 | Mac     | 10.9 (Maverics) | _Beta_
-| Linux   |                 | TBA
+| Linux   |                 | _Coming Soon_ - [Plugin.BlueZ](https://github.com/SuessLabs/Plugin.BlueZ)
 | Tizen   |                 | TBA
 
 ## Setup
