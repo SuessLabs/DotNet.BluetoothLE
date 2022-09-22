@@ -1,10 +1,10 @@
-# Cross-Platform Bluetooth LE Plugin
+# .NET Cross-Platform Bluetooth LE Plugin
 
 > STATUS: This project is in the Beta-2 phase.
 
-Cross.BluetoothLE is a cross-platform plugin for accessing Bluetooth LE in your Android, Linux, Mac, Windows (UWP, .NET Core) applications. This allows developers to maintain the same base code which can be deployed across multiple platforms.
+DotNet.BluetoothLE is a cross-platform plugin for accessing Bluetooth LE in your Android, Linux, Mac, Windows (UWP, .NET Core) applications. This allows developers to maintain the same base code which can be deployed across multiple platforms.
 
-As developers, some of us want bare-bones, down to the metal code without the need of boiler-plate stuff that doesn't align with our architectures. That is the goal of Cross.BluetoothLE.
+As developers, some of us want bare-bones, down to the metal code without the need of boiler-plate stuff that doesn't align with our architectures. That is the goal of DotNet.BluetoothLE.
 
 ## Support
 
