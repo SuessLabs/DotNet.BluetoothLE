@@ -13,7 +13,9 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageId>Cross.BluetoothLe</PackageId>
+    <PackageTags>BluetoothLe xamarin mac ios android uwp wpf netcore dotnet tizen tvos watchos</PackageTags>
     <Authors>Suess Labs</Authors>
+    <Copyright>Copyright © 2022 Xeno Innovations, Inc.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Description>Cross-platform Bluetooth Low Energy library, based on Plugin.BLE, for Xamarin.iOS, Xamarin.Android, Mac, UWP(Preview), .Net Core 3.x, Net5.x and .Net Framework 4.6.1+(Preview - Windows 10 only - WPF and Windows.Forms), TVOS(Preview) and WatchOS(Preview), Tizen(coming soon)</Description>
     <AssemblyName>Cross.BluetoothLe</AssemblyName>
@@ -21,6 +23,7 @@
     <RepositoryUrl>https://github.com/SuessLabs/Cross.BluetoothLe</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/SuessLabs/Cross.BluetoothLe</PackageProjectUrl>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
     <PackageReleaseNotes>
 [1.1]
 - Reintroduced interfaces for cleaner dependency injection
@@ -28,10 +31,7 @@
 [1.0]
 - Added NET 5.x support
 - Update windows API to 10.0.19041
-</PackageReleaseNotes>
-    <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <PackageTags>BluetoothLe xamarin mac ios android uwp wpf netcore dotnet tizen tvos watchos</PackageTags>
-    <Copyright>Copyright © 2022 Xeno Innovations, Inc.</Copyright>
+    </PackageReleaseNotes>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
     <DebugSymbols>true</DebugSymbols>

@@ -4,8 +4,13 @@ using MvvmCross.ViewModels;
 
 namespace BLE.Client.ViewModels
 {
-  public class DeviceListItemViewModel : MvxNotifyPropertyChanged
+  public class DeviceListItemViewModel : MvxNotifyPropertyChanged // BindableBase
   {
+    public DeviceListItemViewModel(Device device)
+    {
+      Device = device;
+    }
+
     public Device Device { get; private set; }
 
     public Guid Id => Device.Id;
@@ -16,17 +21,10 @@ namespace BLE.Client.ViewModels
 
     public string Name => Device.Name;
 
-    public DeviceListItemViewModel(Device device)
-    {
-      Device = device;
-    }
-
-    public void Update(Device newDevice = null)
+    public void Update(Device? newDevice = null)
     {
       if (newDevice != null)
-      {
         Device = newDevice;
-      }
 
       RaisePropertyChanged(nameof(IsConnected));
       RaisePropertyChanged(nameof(Rssi));
