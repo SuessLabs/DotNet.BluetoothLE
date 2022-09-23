@@ -69,3 +69,5 @@ Set in your `.appxmanifest` file
 ### Linux
 
 _Coming soon._
+
+Until then check out the [Plugin.BlueZ](https://github.com/SuessLabs/Plugin.BlueZ) NuGet package for .NET Linux Bluetooth LE.
