@@ -65,16 +65,25 @@ namespace Cross.BluetoothLe
 
     private async Task InitAdapter()
     {
-      NativeAdapter = await BluetoothAdapter.GetDefaultAsync();
-
-      _radio = await NativeAdapter.GetRadioAsync();
-
-      if (_radio != null)
+      try
       {
-        _radio.StateChanged += OnRadioStateChanged;
-      }
 
-      State = GetInitialStateNative();
+        NativeAdapter = await BluetoothAdapter.GetDefaultAsync();
+
+        _radio = await NativeAdapter.GetRadioAsync();
+
+        if (_radio != null)
+        {
+          _radio.StateChanged += OnRadioStateChanged;
+        }
+
+        State = GetInitialStateNative();
+      }
+      catch(NullReferenceException)
+      {
+        NativeAdapter = null;
+        State = BluetoothState.Unknown;
+      }
     }
 
     private void OnRadioStateChanged(Radio sender, object args)
