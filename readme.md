@@ -41,7 +41,8 @@ Android 12 and above
 Set in your `.appxmanifest` file
 
 ```xml
-<DeviceCapability Name="bluetooth" />
+<DeviceCapability Name="bluetooth"/>
+<DeviceCapability Name="location"/>
 ```
 
 ### iOS
@@ -49,10 +50,10 @@ Set in your `.appxmanifest` file
 ```xml
 <key>UIBackgroundModes</key>
 <array>
-    <!-- for connecting to devices (client) -->
+    <!-- For connecting to devices (client) -->
     <string>bluetooth-central</string>
 
-    <!-- for server configurations if needed -->
+    <!-- For server configurations (if needed) -->
     <string>bluetooth-peripheral</string>
 </array>
 
@@ -68,3 +69,5 @@ Set in your `.appxmanifest` file
 ### Linux
 
 _Coming soon._
+
+Until then check out the [Plugin.BlueZ](https://github.com/SuessLabs/Plugin.BlueZ) NuGet package for .NET Linux Bluetooth LE.

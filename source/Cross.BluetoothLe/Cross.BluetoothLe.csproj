@@ -13,7 +13,9 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageId>Cross.BluetoothLe</PackageId>
+    <PackageTags>BluetoothLe xamarin mac ios android uwp wpf netcore dotnet tizen tvos watchos</PackageTags>
     <Authors>Suess Labs</Authors>
+    <Copyright>Copyright © 2022 Xeno Innovations, Inc.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Description>Cross-platform Bluetooth Low Energy library, based on Plugin.BLE, for Xamarin.iOS, Xamarin.Android, Mac, UWP(Preview), .Net Core 3.x, Net5.x and .Net Framework 4.6.1+(Preview - Windows 10 only - WPF and Windows.Forms), TVOS(Preview) and WatchOS(Preview), Tizen(coming soon)</Description>
     <AssemblyName>Cross.BluetoothLe</AssemblyName>
@@ -21,21 +23,31 @@
     <RepositoryUrl>https://github.com/SuessLabs/Cross.BluetoothLe</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/SuessLabs/Cross.BluetoothLe</PackageProjectUrl>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
     <PackageReleaseNotes>
 [1.1]
-- Drop
+- Reintroduced interfaces for cleaner dependency injection
 
 [1.0]
 - Added NET 5.x support
 - Update windows API to 10.0.19041
-</PackageReleaseNotes>
-    <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <PackageTags>BluetoothLe xamarin mac ios android uwp wpf netcore dotnet tizen tvos watchos</PackageTags>
-    <Copyright>Copyright © 2022 Xeno Innovations, Inc.</Copyright>
+    </PackageReleaseNotes>
   </PropertyGroup>
+
+  <!--<PropertyGroup>
+    <SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-ios'))">10.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-tvos'))">10.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-maccatalyst'))">13.1</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-macos'))">10.14</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-android'))">21.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows10'))">10.0.17763.0</SupportedOSPlatformVersion>
+    <TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows10'))">10.0.17763.0</TargetPlatformMinVersion>
+  </PropertyGroup>-->
+
   <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
+  
   <PropertyGroup Condition=" '$(Configuration)'=='Release' And '$(OS)' == 'Windows_NT' ">
     <!-- sourcelink: Declare that the Repository URL can be published to NuSpec -->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -44,9 +56,11 @@
     <!-- sourcelink: Include PDB in the built .nupkg -->
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
+  
   <ItemGroup Condition=" '$(Configuration)'=='Release' And '$(OS)' == 'Windows_NT' ">
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
+  
   <ItemGroup>
     <None Include="..\..\readme.md" Pack="true" PackagePath="\" />
     <Compile Include="**\*.shared.cs" />
@@ -68,7 +82,11 @@
   <PropertyGroup Condition=" $(TargetFramework.StartsWith('net5.0-windows10')) ">
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-      
+
+  <PropertyGroup Condition=" $(TargetFramework.StartsWith('net6.0-windows10')) ">
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netcoreapp')) ">
     <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.17763.1000" />
     <Compile Include="**\*.netcore.cs" />
@@ -114,5 +132,8 @@
   <ItemGroup Condition=" $(TargetFramework.StartsWith('tizen')) ">
     <Compile Include="**\*.tizen.cs" />
     <Compile Include="**\*.tizen.*.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Platform\Base\IDevice.shared.cs" />
   </ItemGroup>
 </Project>

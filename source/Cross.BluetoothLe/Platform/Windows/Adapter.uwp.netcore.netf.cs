@@ -105,7 +105,10 @@ namespace Cross.BluetoothLe
       }
     }
 
-    public async Task<Device> ConnectToKnownDeviceAsync(Guid deviceGuid, ConnectParameters connectParameters = default, CancellationToken cancellationToken = default, bool dontThrowExceptionOnNotFound = false)
+    public async Task<Device> ConnectToKnownDeviceAsync(
+      Guid deviceGuid,
+      ConnectParameters connectParameters = default,
+      CancellationToken cancellationToken = default)
     {
       //convert GUID to string and take last 12 characters as MAC address
       var guidString = deviceGuid.ToString("N").Substring(20);
@@ -113,12 +116,7 @@ namespace Cross.BluetoothLe
       var nativeDevice = await BluetoothLEDevice.FromBluetoothAddressAsync(bluetoothAddress);
 
       if (nativeDevice == null)
-      {
-        if (dontThrowExceptionOnNotFound == true)
-          return null;
-
         throw new DeviceNotFoundException(deviceGuid);
-      }
 
       var knownDevice = new Device(this, nativeDevice, 0, deviceGuid);
 

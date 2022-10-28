@@ -22,9 +22,26 @@ namespace BLE.Client.ViewModels
   {
     private readonly BluetoothLE _bluetoothLe;
     private readonly IUserDialogs _userDialogs;
-
     private Guid _previousGuid;
     private CancellationTokenSource _cancellationTokenSource;
+
+    public DeviceListViewModel(BluetoothLE bluetoothLe, Adapter adapter, IUserDialogs userDialogs)
+      : base(adapter)
+    {
+      _bluetoothLe = bluetoothLe;
+      _userDialogs = userDialogs;
+
+      // quick and dirty :>
+      _bluetoothLe.StateChanged += OnStateChanged;
+      Adapter.DeviceDiscovered += OnDeviceDiscovered;
+      Adapter.DeviceAdvertised += OnDeviceDiscovered;
+      Adapter.ScanTimeoutElapsed += Adapter_ScanTimeoutElapsed;
+      Adapter.DeviceDisconnected += OnDeviceDisconnected;
+      Adapter.DeviceConnectionLost += OnDeviceConnectionLost;
+      //Adapter.DeviceConnected += (sender, e) => Adapter.DisconnectDeviceAsync(e.Device);
+
+      Adapter.ScanMode = ScanMode.LowLatency;
+    }
 
     public Guid PreviousGuid
     {
@@ -99,24 +116,6 @@ namespace BLE.Client.ViewModels
     {
       get => Adapter.ScanMode;
       set => Adapter.ScanMode = value;
-    }
-
-    public DeviceListViewModel(BluetoothLE bluetoothLe, Adapter adapter, IUserDialogs userDialogs)
-      : base(adapter)
-    {
-      _bluetoothLe = bluetoothLe;
-      _userDialogs = userDialogs;
-
-      // quick and dirty :>
-      _bluetoothLe.StateChanged += OnStateChanged;
-      Adapter.DeviceDiscovered += OnDeviceDiscovered;
-      Adapter.DeviceAdvertised += OnDeviceDiscovered;
-      Adapter.ScanTimeoutElapsed += Adapter_ScanTimeoutElapsed;
-      Adapter.DeviceDisconnected += OnDeviceDisconnected;
-      Adapter.DeviceConnectionLost += OnDeviceConnectionLost;
-      //Adapter.DeviceConnected += (sender, e) => Adapter.DisconnectDeviceAsync(e.Device);
-
-      Adapter.ScanMode = ScanMode.LowLatency;
     }
 
     private Task GetPreviousGuidAsync()

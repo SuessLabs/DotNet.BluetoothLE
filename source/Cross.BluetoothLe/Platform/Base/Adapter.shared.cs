@@ -9,7 +9,7 @@ using Cross.BluetoothLe.Utils;
 
 namespace Cross.BluetoothLe
 {
-  public partial class Adapter  // : IAdapter
+  public partial class Adapter //// : IAdapter
   {
     private CancellationTokenSource _scanCancellationTokenSource;
     private volatile bool _isScanning;
@@ -29,6 +29,10 @@ namespace Cross.BluetoothLe
 
     public event EventHandler ScanTimeoutElapsed;
 
+    public Adapter()
+    {
+    }
+
     public bool IsScanning
     {
       get => _isScanning;
@@ -36,6 +40,7 @@ namespace Cross.BluetoothLe
     }
 
     public int ScanTimeout { get; set; } = 10000;
+
     public ScanMode ScanMode { get; set; } = ScanMode.LowPower;
 
     protected ConcurrentDictionary<Guid, Device> DiscoveredDevicesRegistry { get; } = new ConcurrentDictionary<Guid, Device>();
@@ -237,10 +242,6 @@ namespace Cross.BluetoothLe
         Device = device,
         ErrorMessage = errorMessage
       });
-    }
-
-    public Adapter()
-    {
     }
   }
 }
